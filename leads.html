@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leads</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="sidebar">
+  <h3>CRM</h3>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="leads.html">Leads</a>
+  <a href="profile.html">Profile</a>
+</div>
+
+<div class="main">
+
+  <!-- Top -->
+  <div class="topbar">
+    <h2>Leads Management</h2>
+    <!-- <button onclick="toggleForm()">+ Add Manual Lead</button> -->
+  </div>
+
+  <!-- Filters -->
+<div class="filter-box">
+
+  <div class="input-group">
+    <input id="search" placeholder="🔍 Search name or phone">
+  </div>
+
+  <select id="status" class="select">
+    <option value="">All Status</option>
+    <option value="NEW">New</option>
+    <option value="IN_PROGRESS">In Progress</option>
+    <option value="CONVERTED">Converted</option>
+    <option value="LOST">Lost</option>
+  </select>
+
+  <input type="date" id="from" class="date">
+  <input type="date" id="to" class="date">
+
+  <button id="applyBtn" class="apply-btn">Apply Filters</button>
+
+</div>
+
+  <!-- Manual Lead Form -->
+  <div class="card" id="manualForm" style="display:none;">
+    <h3>Add Manual Lead</h3>
+
+    <input id="m_name" placeholder="Name">
+    <input id="m_phone" placeholder="Phone">
+    <input id="m_location" placeholder="Location">
+
+    <!-- <button onclick="addManualLead()">Save Lead</button> -->
+  </div>
+
+  <!-- Table -->
+  <div class="table-box">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Status</th>
+          <th>Source</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="leads"></tbody>
+    </table>
+  </div>
+
+<div class="pagination">
+  <button onclick="prevPage()" id="prevBtn">Prev</button>
+<button onclick="nextPage()" id="nextBtn">Next</button>
+
+</div>
+
+
+
+</div>
+
+<script src="./js/leads.js"></script>
+
+</body>
+</html>

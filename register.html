@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 35px;
+      border-radius: 16px;
+      width: 380px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #6366f1;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #6366f1;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #4f46e5;
+    }
+
+    .link {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .link a {
+      color: #6366f1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    #error {
+      color: red;
+      font-size: 13px;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Create Account</h2>
+
+  <input id="name" placeholder="Full Name">
+  <input id="business" placeholder="Business Name">
+  <input id="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+  <input id="whatsapp" placeholder="WhatsApp Number">
+
+  <button onclick="register()">Register</button>
+
+  <p id="error"></p>
+
+  <div class="link">
+    Already have account? <a href="login.html">Login</a>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+
+<script>
+async function register() {
+  const data = {
+    name: document.getElementById("name").value,
+    business_name: document.getElementById("business").value,
+    email: document.getElementById("email").value,
+    password: document.getElementById("password").value,
+    whatsapp_number: document.getElementById("whatsapp").value
+  };
+
+  const res = await apiCall('/auth/register', 'POST', data);
+
+  if (res.success) {
+    alert("Account created!");
+    window.location.href = "login.html";
+  } else {
+    document.getElementById("error").innerText = res.message;
+  }
+}
+</script>
+
+</body>
+</html>

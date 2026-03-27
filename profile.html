@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h3>CRM</h3>
+  <a href="dashboard.html">Dashboard</a>
+  <a href="profile.html">Profile</a>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <h2>Profile Settings</h2>
+  </div>
+
+  <!-- Profile Card -->
+  <div class="card profile-card">
+
+    <label>Name</label>
+    <input id="name">
+
+    <label>Email</label>
+    <input id="email" disabled>
+
+    <label>Business Name</label>
+    <input id="business">
+
+    <label>WhatsApp</label>
+    <input id="whatsapp">
+
+    <label>Location</label>
+    <input id="location">
+
+    <button onclick="updateProfile()">💾 Save Changes</button>
+
+    <p id="msg"></p>
+
+  </div>
+
+</div>
+
+<script src="js/api.js"></script>
+
+<script>
+async function loadProfile() {
+  const res = await apiCall('/client/me');
+
+  if (res.success) {
+    const d = res.data;
+
+    document.getElementById("name").value = d.name || "";
+    document.getElementById("email").value = d.email || "";
+    document.getElementById("business").value = d.business_name || "";
+    document.getElementById("whatsapp").value = d.whatsapp_number || "";
+    document.getElementById("location").value = d.location || "";
+  }
+}
+
+async function updateProfile() {
+  const data = {
+    name: document.getElementById("name").value,
+    business_name: document.getElementById("business").value,
+    whatsapp_number: document.getElementById("whatsapp").value,
+    location: document.getElementById("location").value
+  };
+
+  const res = await apiCall('/client/update', 'PUT', data);
+
+  const msg = document.getElementById("msg");
+
+  if (res.success) {
+    msg.style.color = "green";
+    msg.innerText = "Profile updated successfully ✅";
+  } else {
+    msg.style.color = "red";
+    msg.innerText = res.message;
+  }
+}
+
+loadProfile();
+</script>
+
+<script src="js/api.js"></script>
+
+<script>
+async function loadProfile() {
+  const res = await apiCall('/client/me');
+
+  if (res.success) {
+    const d = res.data;
+
+    document.getElementById("name").value = d.name || "";
+    document.getElementById("email").value = d.email || "";
+    document.getElementById("business").value = d.business_name || "";
+    document.getElementById("whatsapp").value = d.whatsapp_number || "";
+    document.getElementById("location").value = d.location || "";
+  }
+}
+
+async function updateProfile() {
+  const data = {
+    name: document.getElementById("name").value,
+    business_name: document.getElementById("business").value,
+    whatsapp_number: document.getElementById("whatsapp").value,
+    location: document.getElementById("location").value
+  };
+
+  const res = await apiCall('/client/update', 'PUT', data);
+
+  const msg = document.getElementById("msg");
+
+  if (res.success) {
+    msg.style.color = "green";
+    msg.innerText = "Profile updated successfully ✅";
+  } else {
+    msg.style.color = "red";
+    msg.innerText = res.message;
+  }
+}
+
+loadProfile();
+</script>
+
+</body>
+</html>
