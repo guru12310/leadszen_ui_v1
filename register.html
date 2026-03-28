@@ -94,7 +94,7 @@
   <p id="error"></p>
 
   <div class="link">
-    Already have account? <a href="login.html">Login</a>
+    Already have account? <a href="index.html">Login</a>
   </div>
 </div>
 
@@ -114,7 +114,7 @@ async function register() {
 
   if (res.success) {
     alert("Account created!");
-    window.location.href = "login.html";
+    window.location.href = "index.html";
   } else {
     document.getElementById("error").innerText = res.message;
   }

@@ -1,4 +1,4 @@
-const API = "http://localhost:3000/api";
+const API = "https://leadszen-v1.onrender.com/api";
 const token = localStorage.getItem("token");
 
 async function loadSummary() {
@@ -121,7 +121,7 @@ function goProfile() {
 
 function logout() {
   localStorage.removeItem("token");
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 
 

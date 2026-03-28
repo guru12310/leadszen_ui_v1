@@ -2,7 +2,7 @@ console.log("LEADS JS LOADED 🚀");
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const API = "http://localhost:3000/api";
+  const API = "https://leadszen-v1.onrender.com/api";
   const token = localStorage.getItem("token");
 
   let allLeads = [];

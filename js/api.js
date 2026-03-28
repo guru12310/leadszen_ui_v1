@@ -1,4 +1,4 @@
-const API = "http://localhost:3000/api";
+const API = "https://leadszen-v1.onrender.com/api";
 
 async function apiCall(endpoint, method = "GET", body = null) {
   try {
