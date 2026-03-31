@@ -168,3 +168,34 @@ function prevPage() {
   fetchLeads();
 
 });
+
+
+
+
+window.openModal = function () {
+  document.getElementById("leadModal").style.display = "block";
+};
+
+window.closeModal = function () {
+  document.getElementById("leadModal").style.display = "none";
+};
+
+window.saveLead = async function () {
+  const data = {
+    name: document.getElementById("m_name").value,
+    phone: document.getElementById("m_phone").value,
+    location: document.getElementById("m_location").value
+  };
+
+  await fetch("https://leadszen-v1.onrender.com/api/lead/manual", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("token")
+    },
+    body: JSON.stringify(data)
+  });
+
+  closeModal();
+  loadLeads();
+};

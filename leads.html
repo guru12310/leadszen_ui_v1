@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+    <head>
+  <title>Leads</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- ADD THIS -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+
 <head>
   <title>Leads</title>
   <link rel="stylesheet" href="css/style.css">
@@ -18,7 +26,7 @@
   <!-- Top -->
   <div class="topbar">
     <h2>Leads Management</h2>
-    <!-- <button onclick="toggleForm()">+ Add Manual Lead</button> -->
+<button onclick="openModal()">+ Add Lead</button>
   </div>
 
   <!-- Filters -->
@@ -42,17 +50,6 @@
   <button id="applyBtn" class="apply-btn">Apply Filters</button>
 
 </div>
-
-  <!-- Manual Lead Form -->
-  <div class="card" id="manualForm" style="display:none;">
-    <h3>Add Manual Lead</h3>
-
-    <input id="m_name" placeholder="Name">
-    <input id="m_phone" placeholder="Phone">
-    <input id="m_location" placeholder="Location">
-
-    <!-- <button onclick="addManualLead()">Save Lead</button> -->
-  </div>
 
   <!-- Table -->
   <div class="table-box">
@@ -80,6 +77,23 @@
 
 </div>
 
+<!-- Manual Lead Modal -->
+<div id="leadModal" class="modal">
+  <div class="modal-content">
+    <h3>Add Manual Lead</h3>
+
+    <input id="m_name" placeholder="Name">
+    <input id="m_phone" placeholder="Phone">
+    <input id="m_location" placeholder="Location">
+
+    <button onclick="saveLead()">Save</button>
+    <button onclick="closeModal()" class="cancel">Cancel</button>
+  </div>
+</div>
+
+
+
+<script src="./js/api.js"></script>
 <script src="./js/leads.js"></script>
 
 </body>
