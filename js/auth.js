@@ -1,5 +1,19 @@
 const API = "https://leadszen-v1.onrender.com/api";
 
+
+
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.innerText = msg;
+  t.className = "toast show";
+
+  setTimeout(() => {
+    t.className = "toast";
+  }, 3000);
+}
+
+
+
 async function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -14,7 +28,11 @@ async function login() {
 
   if (data.success) {
     localStorage.setItem("token", data.data.token);
-    window.location.href = "dashboard.html";
+    showToast("Welcome to LeadsZen");
+    setTimeout(() => {
+      window.location.href = "dashboard.html";
+    }, 3000);
+    
   } else {
     document.getElementById("error").innerText = data.message;
   }

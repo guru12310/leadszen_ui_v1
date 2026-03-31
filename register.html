@@ -108,6 +108,16 @@
 <script src="js/api.js"></script>
 
 <script>
+  function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.innerText = msg;
+  t.className = "toast show";
+
+  setTimeout(() => {
+    t.className = "toast";
+  }, 3000);
+}
+
 async function register() {
   const data = {
     name: document.getElementById("name").value,
@@ -120,13 +130,20 @@ async function register() {
   const res = await apiCall('/auth/register', 'POST', data);
 
   if (res.success) {
-    alert("Account created!");
-    window.location.href = "index.html";
+    // alert("Account created!");
+    // window.location.href = "index.html";
+
+    showToast("Registered Successfully");
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 3000);
+
   } else {
     document.getElementById("error").innerText = res.message;
   }
 }
 </script>
+<div id="toast" class="toast"></div>
 
 </body>
 </html>

@@ -129,6 +129,17 @@ function getClientId() {
   return params.get("client_id");
 }
 
+  function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.innerText = msg;
+  t.className = "toast show";
+
+  setTimeout(() => {
+    t.className = "toast";
+  }, 3000);
+}
+
+
 async function submitLead() {
   const clientId = getClientId();
 
@@ -152,11 +163,16 @@ async function submitLead() {
     body: JSON.stringify(data)
   });
 
-  alert("Submitted successfully!");
+  // alert("Submitted successfully!");
+    showToast("Your request has been received. We'll contact you shortly.");
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 7000);
 }
 
 
 </script>
 
+<div id="toast" class="toast"></div>
 </body>
 </html>
