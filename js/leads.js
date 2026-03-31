@@ -187,7 +187,7 @@ window.saveLead = async function () {
     location: document.getElementById("m_location").value
   };
 
-  await fetch("https://leadszen-v1.onrender.com/api/lead/manual", {
+  await fetch("https://leadszen-v1.onrender.com/api/dashboard/leadmanual", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
