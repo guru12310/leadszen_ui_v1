@@ -17,6 +17,7 @@
 <div class="sidebar">
   <h3>LeadsZen</h3>
   <a href="dashboard.html">Dashboard</a>
+    <a href="leads.html">Leads</a>
   <a href="profile.html">Profile</a>
 </div>
 
@@ -24,7 +25,35 @@
 <div class="main">
 
   <!-- Topbar -->
+  <!-- <div class="topbar"> -->
+    <div class="topbar">
+
+  <div>
+    <h2 id="welcome">Welcome</h2>
+    <p class="sub">Here’s your business overview</p>
+  </div>
+
+<div class="profile" onclick="toggleMenu(event)">
+    <span id="username">User</span>
+    <div class="avatar" id="avatar">U</div>
+
+    <!-- Dropdown -->
+    <div class="dropdown" id="dropdown">
+      <div class="user-info">
+        <strong id="drop-name">User</strong><br>
+        <small id="drop-email">email</small>
+      </div>
+
+      <hr>
+
+      <div class="menu-item" onclick="goProfile()">Edit Profile</div>
+      <div class="menu-item logout" onclick="logout()">Logout</div>
+    </div>
+  </div>
+
+</div>
   <div class="topbar">
+
     <h2>Profile Settings</h2>
   </div>
 
@@ -55,6 +84,26 @@
 </div>
 
 <script src="js/api.js"></script>
+<script>
+
+  function toggleMenu(event) {
+  event.stopPropagation(); // 🔥 prevents immediate close
+
+  const menu = document.getElementById("dropdown");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+  menu.classList.toggle("show");
+}
+
+function goProfile() {
+  window.location.href = "profile.html";
+}
+
+function logout() {
+  localStorage.removeItem("token");
+  window.location.href = "index.html";
+}
+
+</script>
 
 <script>
 async function loadProfile() {
