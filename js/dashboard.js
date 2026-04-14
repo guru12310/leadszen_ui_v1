@@ -15,7 +15,7 @@ async function loadSummary() {
   <h2>${d.total_leads}</h2>
 `;
 
-document.getElementById("converted").innerHTML = `
+  document.getElementById("converted").innerHTML = `
   <div>Converted</div>
   <h2>${d.converted}</h2>
 `;
@@ -138,33 +138,33 @@ async function loadChart() {
   const labels = data.data.map(d => d.date);
   const values = data.data.map(d => d.total_leads);
 
-new Chart(document.getElementById("chart"), {
-  type: "line",
-  data: {
-    labels,
-    datasets: [
-      {
-        label: "Total Leads",
-        data: values,
-        borderWidth: 3,
-        tension: 0.4,
-        fill: true
-      }
-    ]
-  },
-  options: {
-    plugins: {
-      legend: {
-        display: true
-      }
+  new Chart(document.getElementById("chart"), {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "Total Leads",
+          data: values,
+          borderWidth: 3,
+          tension: 0.4,
+          fill: true
+        }
+      ]
     },
-    scales: {
-      y: {
-        beginAtZero: true
+    options: {
+      plugins: {
+        legend: {
+          display: true
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
       }
     }
-  }
-});
+  });
 }
 
 async function loadUser() {
@@ -175,12 +175,12 @@ async function loadUser() {
   const data = await res.json();
 
   if (data.success) {
-      const name = data.data.name;
+    const name = data.data.name;
 
-      document.getElementById("welcome").innerText = `Welcome, ${name}`;
-      document.getElementById("username").innerText = name;
-      document.getElementById("drop-name").innerText = name;
-      document.getElementById("drop-email").innerText = data.data.email;
+    document.getElementById("welcome").innerText = `Welcome, ${name}`;
+    document.getElementById("username").innerText = name;
+    document.getElementById("drop-name").innerText = name;
+    document.getElementById("drop-email").innerText = data.data.email;
 
     // avatar first letter
     document.querySelector(".avatar").innerText = name.charAt(0).toUpperCase();

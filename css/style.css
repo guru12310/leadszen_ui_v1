@@ -51,13 +51,14 @@ body {
   border-radius: 14px;
   color: white;
   font-weight: bold;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   transition: 0.3s;
 }
 
 .card:hover {
   transform: translateY(-5px);
 }
+
 /* 
 .blue { background: linear-gradient(135deg, #6366f1, #4f46e5); }
 .green { background: linear-gradient(135deg, #22c55e, #16a34a); }
@@ -66,17 +67,28 @@ body {
 
 
 
-.blue { background: linear-gradient(135deg, #4547ea, #c2bffb); }
-.green { background: linear-gradient(135deg, #30b661, #a3f1c0); }
-.orange { background: linear-gradient(135deg, #f7a10d, #ebc498); }
-.red { background: linear-gradient(135deg, #f02525, #ea9d9d); }
+.blue {
+  background: linear-gradient(135deg, #4547ea, #c2bffb);
+}
+
+.green {
+  background: linear-gradient(135deg, #30b661, #a3f1c0);
+}
+
+.orange {
+  background: linear-gradient(135deg, #f7a10d, #ebc498);
+}
+
+.red {
+  background: linear-gradient(135deg, #f02525, #ea9d9d);
+}
 
 /* Chart container */
 .chart-box {
   background: white;
   padding: 20px;
   border-radius: 14px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   margin-bottom: 30px;
 }
 
@@ -85,7 +97,7 @@ body {
   background: white;
   border-radius: 14px;
   padding: 20px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 table {
@@ -97,7 +109,8 @@ thead {
   background: #f1f5f9;
 }
 
-th, td {
+th,
+td {
   padding: 14px;
   text-align: left;
 }
@@ -114,10 +127,25 @@ tr {
   font-weight: bold;
 }
 
-.new { background: #e0e7ff; color: #3730a3; }
-.converted { background: #dcfce7; color: #166534; }
-.progress { background: #fef3c7; color: #92400e; }
-.lost { background: #fee2e2; color: #991b1b; }
+.new {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.converted {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.progress {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.lost {
+  background: #fee2e2;
+  color: #991b1b;
+}
 
 /* Mobile */
 @media (max-width: 900px) {
@@ -171,9 +199,12 @@ tr {
 
 .profile-wrapper {
   display: flex;
-  justify-content: center;   /* horizontal center */
-  align-items: center;       /* vertical center */
-  min-height: 80vh;          /* full screen feel */
+  justify-content: center;
+  /* horizontal center */
+  align-items: center;
+  /* vertical center */
+  min-height: 80vh;
+  /* full screen feel */
 }
 
 .profile-card {
@@ -182,7 +213,7 @@ tr {
   background: white;
   padding: 25px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* Labels */
@@ -209,7 +240,7 @@ tr {
 .profile-card input:focus {
   outline: none;
   border-color: #6366f1;
-  box-shadow: 0 0 0 2px rgba(99,102,241,0.2);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
 
 /* Disabled email */
@@ -236,7 +267,7 @@ tr {
 /* Button hover */
 .profile-card button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(79,70,229,0.3);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
 }
 
 /* Message */
@@ -260,7 +291,7 @@ tr {
   width: 220px;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   display: none;
   padding: 10px;
   z-index: 100;
@@ -298,7 +329,8 @@ tr {
 }
 
 
-.filter-box input, .filter-box select {
+.filter-box input,
+.filter-box select {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ddd;
@@ -338,7 +370,7 @@ tr {
   background: white;
   padding: 15px;
   border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
   margin-bottom: 20px;
 }
 
@@ -373,10 +405,21 @@ tr {
 
 
 
-.new { background: #e0e7ff; }
-.in_progress { background: #fef3c7; }
-.converted { background: #dcfce7; }
-.lost { background: #fee2e2; }
+.new {
+  background: #e0e7ff;
+}
+
+.in_progress {
+  background: #fef3c7;
+}
+
+.converted {
+  background: #dcfce7;
+}
+
+.lost {
+  background: #fee2e2;
+}
 
 .edit-btn {
   margin-left: 8px;
@@ -392,7 +435,8 @@ tr {
 
 .status-cell {
   display: flex;
-  justify-content: space-between; /* 🔥 key */
+  justify-content: space-between;
+  /* 🔥 key */
   align-items: center;
   min-width: 200px;
 }
@@ -401,7 +445,8 @@ tr {
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 12px;
-  white-space: nowrap; /* 🔥 prevents break */
+  white-space: nowrap;
+  /* 🔥 prevents break */
 }
 
 /* Optional fixed width for badge */
@@ -429,7 +474,7 @@ tr {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
@@ -546,7 +591,7 @@ tr {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     top: 0;
     left: 0;
     z-index: 999;

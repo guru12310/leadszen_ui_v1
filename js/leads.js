@@ -20,31 +20,31 @@ document.addEventListener("DOMContentLoaded", function () {
     applyFilters();
   }
 
-let filteredLeads = [];
+  let filteredLeads = [];
 
-function applyFilters() {
-  const search = document.getElementById("search").value.toLowerCase();
-  const status = document.getElementById("status").value;
+  function applyFilters() {
+    const search = document.getElementById("search").value.toLowerCase();
+    const status = document.getElementById("status").value;
 
-  filteredLeads = allLeads.filter(l => {
-    return (
-      (!search || l.name.toLowerCase().includes(search) || l.phone.includes(search)) &&
-      (!status || l.status === status)
-    );
-  });
+    filteredLeads = allLeads.filter(l => {
+      return (
+        (!search || l.name.toLowerCase().includes(search) || l.phone.includes(search)) &&
+        (!status || l.status === status)
+      );
+    });
 
-  currentPage = 1;
-  renderTable();
-}
+    currentPage = 1;
+    renderTable();
+  }
 
-function renderTable() {
-  const start = (currentPage - 1) * limit;
-  const end = start + limit;
+  function renderTable() {
+    const start = (currentPage - 1) * limit;
+    const end = start + limit;
 
-  const pageData = filteredLeads.slice(start, end);
+    const pageData = filteredLeads.slice(start, end);
 
-  document.getElementById("leads").innerHTML =
-    pageData.map(l => `
+    document.getElementById("leads").innerHTML =
+      pageData.map(l => `
       <tr>
         <td>${l.name}</td>
         <td>${l.phone}</td>
@@ -61,101 +61,101 @@ function renderTable() {
       </tr>
     `).join('');
 
-  const totalPages = Math.ceil(filteredLeads.length / limit);
+    const totalPages = Math.ceil(filteredLeads.length / limit);
 
-  document.getElementById("pageInfo").innerText =
-    `Page ${currentPage} of ${totalPages || 1}`;
+    document.getElementById("pageInfo").innerText =
+      `Page ${currentPage} of ${totalPages || 1}`;
 
-  document.getElementById("prevBtn").disabled = currentPage === 1;
-  document.getElementById("nextBtn").disabled = currentPage >= totalPages;
-}
+    document.getElementById("prevBtn").disabled = currentPage === 1;
+    document.getElementById("nextBtn").disabled = currentPage >= totalPages;
+  }
 
-window.enableEdit = function(id, currentStatus) {
-  document.getElementById(`status-${id}`).innerHTML = `
+  window.enableEdit = function (id, currentStatus) {
+    document.getElementById(`status-${id}`).innerHTML = `
     <select id="select-${id}">
-      <option ${currentStatus=='NEW'?'selected':''}>NEW</option>
-      <option ${currentStatus=='IN_PROGRESS'?'selected':''}>IN_PROGRESS</option>
-      <option ${currentStatus=='CONVERTED'?'selected':''}>CONVERTED</option>
-      <option ${currentStatus=='LOST'?'selected':''}>LOST</option>
+      <option ${currentStatus == 'NEW' ? 'selected' : ''}>NEW</option>
+      <option ${currentStatus == 'IN_PROGRESS' ? 'selected' : ''}>IN_PROGRESS</option>
+      <option ${currentStatus == 'CONVERTED' ? 'selected' : ''}>CONVERTED</option>
+      <option ${currentStatus == 'LOST' ? 'selected' : ''}>LOST</option>
     </select>
     <button onclick="saveStatus(${id})">Save</button>
   `;
-};
+  };
 
-window.saveStatus = async function(id) {
-  const status = document.getElementById(`select-${id}`).value;
+  window.saveStatus = async function (id) {
+    const status = document.getElementById(`select-${id}`).value;
 
-  await fetch(`${API}/lead/${id}/status`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token
-    },
-    body: JSON.stringify({ status })
-  });
+    await fetch(`${API}/lead/${id}/status`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token
+      },
+      body: JSON.stringify({ status })
+    });
 
-  fetchLeads();
-};
+    fetchLeads();
+  };
 
-window.nextPage = function() {
-  const totalPages = Math.ceil(filteredLeads.length / limit);
+  window.nextPage = function () {
+    const totalPages = Math.ceil(filteredLeads.length / limit);
 
-  if (currentPage < totalPages) {
-    currentPage++;
-    renderTable();
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderTable();
+    }
+  };
+
+  window.prevPage = function () {
+    if (currentPage > 1) {
+      currentPage--;
+      renderTable();
+    }
+  };
+
+
+  async function saveStatus(id) {
+    const status = document.getElementById(`select-${id}`).value;
+
+    await fetch(`${API}/lead/${id}/status`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token
+      },
+      body: JSON.stringify({ status })
+    });
+
+    fetchLeads(); // reload
   }
-};
 
-window.prevPage = function() {
-  if (currentPage > 1) {
-    currentPage--;
-    renderTable();
+
+  async function fetchLeads() {
+    const res = await fetch(`${API}/lead`, {
+      headers: { Authorization: "Bearer " + token }
+    });
+
+    const data = await res.json();
+    allLeads = data.data || data;
+
+    applyFilters();
   }
-};
 
+  function nextPage() {
+    const totalPages = Math.ceil(filteredLeads.length / limit);
 
-async function saveStatus(id) {
-  const status = document.getElementById(`select-${id}`).value;
-
-  await fetch(`${API}/lead/${id}/status`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token
-    },
-    body: JSON.stringify({ status })
-  });
-
-  fetchLeads(); // reload
-}
-
-
-async function fetchLeads() {
-  const res = await fetch(`${API}/lead`, {
-    headers: { Authorization: "Bearer " + token }
-  });
-
-  const data = await res.json();
-  allLeads = data.data || data;
-
-  applyFilters();
-}
-
-function nextPage() {
-  const totalPages = Math.ceil(filteredLeads.length / limit);
-
-  if (currentPage < totalPages) {
-    currentPage++;
-    renderTable();
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderTable();
+    }
   }
-}
 
-function prevPage() {
-  if (currentPage > 1) {
-    currentPage--;
-    renderTable();
+  function prevPage() {
+    if (currentPage > 1) {
+      currentPage--;
+      renderTable();
+    }
   }
-}
 
 
 
@@ -252,7 +252,7 @@ window.saveLead = async function () {
     let result = {};
     try {
       result = await res.json();
-    } catch {}
+    } catch { }
 
     console.log("API response:", res.status, result);
 

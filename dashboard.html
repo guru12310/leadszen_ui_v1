@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
   <title>LeadsDashboard</title>
   <link rel="stylesheet" href="css/style.css">
 
@@ -12,62 +13,63 @@
   <title>Dashboard</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
 
-    
-
-<div class="sidebar">
-  <h3>LeadsZen</h3>
-  <a href="#">Dashboard</a>
-  <a href="leads.html">Leads</a>
-  <a href="profile.html">Profile</a>
-</div>
 
 
-
-<div class="main">
-
-<div class="topbar">
-
-  <div>
-    <h2 id="welcome">Welcome</h2>
-    <p class="sub">Here’s your business overview</p>
+  <div class="sidebar">
+    <h3>LeadsZen</h3>
+    <a href="#">Dashboard</a>
+    <a href="leads.html">Leads</a>
+    <a href="profile.html">Profile</a>
   </div>
 
-<div class="profile" onclick="toggleMenu(event)">
-    <span id="username">User</span>
-    <div class="avatar" id="avatar">U</div>
 
-    <!-- Dropdown -->
-    <div class="dropdown" id="dropdown">
-      <div class="user-info">
-        <strong id="drop-name">User</strong><br>
-        <small id="drop-email">email</small>
+
+  <div class="main">
+
+    <div class="topbar">
+
+      <div>
+        <h2 id="welcome">Welcome</h2>
+        <p class="sub">Here’s your business overview</p>
       </div>
 
-      <hr>
+      <div class="profile" onclick="toggleMenu(event)">
+        <span id="username">User</span>
+        <div class="avatar" id="avatar">U</div>
 
-      <div class="menu-item" onclick="goProfile()">Edit Profile</div>
-      <div class="menu-item logout" onclick="logout()">Logout</div>
+        <!-- Dropdown -->
+        <div class="dropdown" id="dropdown">
+          <div class="user-info">
+            <strong id="drop-name">User</strong><br>
+            <small id="drop-email">email</small>
+          </div>
+
+          <hr>
+
+          <div class="menu-item" onclick="goProfile()">Edit Profile</div>
+          <div class="menu-item logout" onclick="logout()">Logout</div>
+        </div>
+      </div>
+
     </div>
-  </div>
-
-</div>
 
 
-  <h2>Dashboard</h2>
+    <h2>Dashboard</h2>
 
-  <!-- Cards -->
-  <div class="cards">
-    <div class="card blue" id="total"></div>
-    <div class="card green" id="converted"></div>
-    <div class="card orange" id="progress"></div>
-    <div class="card red" id="lost"></div>
-  </div>
+    <!-- Cards -->
+    <div class="cards">
+      <div class="card blue" id="total"></div>
+      <div class="card green" id="converted"></div>
+      <div class="card orange" id="progress"></div>
+      <div class="card red" id="lost"></div>
+    </div>
 
     <!-- Table -->
-  <!-- <div class="table-box">
+    <!-- <div class="table-box">
     <h3>Recent Leads</h3>
     <table>
       <thead>
@@ -82,38 +84,39 @@
   </div> -->
 
 
-  <div class="table-box">
-  <h3>Recent Leads</h3>
+    <div class="table-box">
+      <h3>Recent Leads</h3>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Phone</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody id="leads"></tbody>
-  </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="leads"></tbody>
+      </table>
 
-  <!-- ✅ ADD PAGINATION HERE -->
-  <div id="pagination" style="margin-top: 10px; text-align: center;">
-    <button onclick="prevPage()">Prev</button>
-    <span id="pageInfo" style="margin: 0 10px;"></span>
-    <button onclick="nextPage()">Next</button>
+      <!-- ✅ ADD PAGINATION HERE -->
+      <div id="pagination" style="margin-top: 10px; text-align: center;">
+        <button onclick="prevPage()">Prev</button>
+        <span id="pageInfo" style="margin: 0 10px;"></span>
+        <button onclick="nextPage()">Next</button>
+      </div>
+    </div>
+    <!-- Chart -->
+    <div class="chart-box">
+      <h3>Lead Analytics</h3>
+      <canvas id="chart"></canvas>
+    </div>
+
+
+
   </div>
-</div>
-  <!-- Chart -->
-  <div class="chart-box">
-    <h3>Lead Analytics</h3>
-    <canvas id="chart"></canvas>
-  </div>
 
-
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="js/dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/dashboard.js"></script>
 </body>
+
 </html>

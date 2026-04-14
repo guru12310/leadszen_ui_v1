@@ -1,178 +1,182 @@
 <!DOCTYPE html>
 <html>
-    <head>
+
+<head>
   <title>Profile</title>
   <link rel="stylesheet" href="css/style.css">
 
   <!-- ADD THIS -->
   <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
+
 <head>
   <title>Profile</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<!-- Sidebar -->
-<div class="sidebar">
-  <h3>LeadsZen</h3>
-  <a href="dashboard.html">Dashboard</a>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3>LeadsZen</h3>
+    <a href="dashboard.html">Dashboard</a>
     <a href="leads.html">Leads</a>
-  <a href="profile.html">Profile</a>
-</div>
+    <a href="profile.html">Profile</a>
+  </div>
 
-<!-- Main -->
-<div class="main">
+  <!-- Main -->
+  <div class="main">
 
-  <!-- Topbar -->
-  <!-- <div class="topbar"> -->
+    <!-- Topbar -->
+    <!-- <div class="topbar"> -->
     <div class="topbar">
 
-  <div>
-    <h2 id="welcome">Welcome</h2>
-    <p class="sub">Here’s your business overview</p>
-  </div>
-
-<div class="profile" onclick="toggleMenu(event)">
-    <span id="username">User</span>
-    <div class="avatar" id="avatar">U</div>
-
-    <!-- Dropdown -->
-    <div class="dropdown" id="dropdown">
-      <div class="user-info">
-        <strong id="drop-name">User</strong><br>
-        <small id="drop-email">email</small>
+      <div>
+        <h2 id="welcome">Welcome</h2>
+        <p class="sub">Here’s your business overview</p>
       </div>
 
-      <hr>
+      <div class="profile" onclick="toggleMenu(event)">
+        <span id="username">User</span>
+        <div class="avatar" id="avatar">U</div>
 
-      <div class="menu-item" onclick="goProfile()">Edit Profile</div>
-      <div class="menu-item logout" onclick="logout()">Logout</div>
+        <!-- Dropdown -->
+        <div class="dropdown" id="dropdown">
+          <div class="user-info">
+            <strong id="drop-name">User</strong><br>
+            <small id="drop-email">email</small>
+          </div>
+
+          <hr>
+
+          <div class="menu-item" onclick="goProfile()">Edit Profile</div>
+          <div class="menu-item logout" onclick="logout()">Logout</div>
+        </div>
+      </div>
+
     </div>
+    <div class="topbar">
+
+      <h2>Profile Settings</h2>
+    </div>
+
+    <!-- Profile Card -->
+    <div class="profile-wrapper">
+      <div class="card profile-card">
+
+        <label>Name</label>
+        <input id="name">
+
+        <label>Email</label>
+        <input id="email" disabled>
+
+        <label>Business Name</label>
+        <input id="business">
+
+        <label>WhatsApp</label>
+        <input id="whatsapp">
+
+        <label>Location</label>
+        <input id="location">
+
+        <button onclick="updateProfile()">💾 Save Changes</button>
+
+        <p id="msg"></p>
+
+      </div>
+    </div>
+
   </div>
 
-</div>
-  <div class="topbar">
+  <!-- <script src="js/api.js"></script> -->
 
-    <h2>Profile Settings</h2>
-  </div>
+  <script>
+    async function loadProfile() {
+      const res = await apiCall('/client/me');
 
-  <!-- Profile Card -->
-   <div class="profile-wrapper">
-  <div class="card profile-card">
+      if (res.success) {
+        const d = res.data;
 
-    <label>Name</label>
-    <input id="name">
+        document.getElementById("name").value = d.name || "";
+        document.getElementById("email").value = d.email || "";
+        document.getElementById("business").value = d.business_name || "";
+        document.getElementById("whatsapp").value = d.whatsapp_number || "";
+        document.getElementById("location").value = d.location || "";
+      }
+    }
 
-    <label>Email</label>
-    <input id="email" disabled>
+    async function loadUser() {
+      const res = await apiCall('/client/me'); // already gives data
 
-    <label>Business Name</label>
-    <input id="business">
+      if (!res || !res.success) return;
 
-    <label>WhatsApp</label>
-    <input id="whatsapp">
+      const d = res.data;
 
-    <label>Location</label>
-    <input id="location">
+      // ✅ Set all UI data
+      document.getElementById("welcome").innerText = `Welcome, ${d.name}`;
+      document.getElementById("username").innerText = d.name;
+      document.getElementById("drop-name").innerText = d.name;
+      document.getElementById("drop-email").innerText = d.email;
 
-    <button onclick="updateProfile()">💾 Save Changes</button>
+      // ✅ Avatar (IMPORTANT FIX)
+      const avatar = document.getElementById("avatar");
 
-    <p id="msg"></p>
+      if (avatar) {
+        avatar.innerText = d.name ? d.name[0].toUpperCase() : "U";
+      }
+    }
 
-  </div>
-  </div>
+    function toggleMenu(event) {
+      event.stopPropagation(); // 🔥 prevents immediate close
 
-</div>
+      const menu = document.getElementById("dropdown");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+      menu.classList.toggle("show");
+    }
 
-<!-- <script src="js/api.js"></script> -->
+    function goProfile() {
+      window.location.href = "profile.html";
+    }
 
-<script>
-async function loadProfile() {
-  const res = await apiCall('/client/me');
+    function logout() {
+      localStorage.removeItem("token");
+      window.location.href = "index.html";
+    }
 
-  if (res.success) {
-    const d = res.data;
+  </script>
 
-    document.getElementById("name").value = d.name || "";
-    document.getElementById("email").value = d.email || "";
-    document.getElementById("business").value = d.business_name || "";
-    document.getElementById("whatsapp").value = d.whatsapp_number || "";
-    document.getElementById("location").value = d.location || "";
-  }
-}
+  <script src="js/api.js"></script>
 
-async function loadUser() {
-  const res = await apiCall('/client/me'); // already gives data
+  <script>
 
-  if (!res || !res.success) return;
+    async function updateProfile() {
+      const data = {
+        name: document.getElementById("name").value,
+        business_name: document.getElementById("business").value,
+        whatsapp_number: document.getElementById("whatsapp").value,
+        location: document.getElementById("location").value
+      };
 
-  const d = res.data;
+      const res = await apiCall('/client/update', 'PUT', data);
 
-  // ✅ Set all UI data
-  document.getElementById("welcome").innerText = `Welcome, ${d.name}`;
-  document.getElementById("username").innerText = d.name;
-  document.getElementById("drop-name").innerText = d.name;
-  document.getElementById("drop-email").innerText = d.email;
+      const msg = document.getElementById("msg");
 
-  // ✅ Avatar (IMPORTANT FIX)
-  const avatar = document.getElementById("avatar");
+      if (res.success) {
+        msg.style.color = "green";
+        msg.innerText = "Profile updated successfully ✅";
+      } else {
+        msg.style.color = "red";
+        msg.innerText = res.message;
+      }
+    }
 
-  if (avatar) {
-    avatar.innerText = d.name ? d.name[0].toUpperCase() : "U";
-  }
-}
-
-function toggleMenu(event) {
-  event.stopPropagation(); // 🔥 prevents immediate close
-
-  const menu = document.getElementById("dropdown");
-  menu.style.display = menu.style.display === "block" ? "none" : "block";
-  menu.classList.toggle("show");
-}
-
-function goProfile() {
-  window.location.href = "profile.html";
-}
-
-function logout() {
-  localStorage.removeItem("token");
-  window.location.href = "index.html";
-}
-
-</script>
-
-<script src="js/api.js"></script>
-
-<script>
-
-async function updateProfile() {
-  const data = {
-    name: document.getElementById("name").value,
-    business_name: document.getElementById("business").value,
-    whatsapp_number: document.getElementById("whatsapp").value,
-    location: document.getElementById("location").value
-  };
-
-  const res = await apiCall('/client/update', 'PUT', data);
-
-  const msg = document.getElementById("msg");
-
-  if (res.success) {
-    msg.style.color = "green";
-    msg.innerText = "Profile updated successfully ✅";
-  } else {
-    msg.style.color = "red";
-    msg.innerText = res.message;
-  }
-}
-
-loadProfile();
-loadUser()
-toggleMenu()
-goProfile()
-logout()
-</script>
+    loadProfile();
+    loadUser()
+    toggleMenu()
+    goProfile()
+    logout()
+  </script>
 
 </body>
+
 </html>
