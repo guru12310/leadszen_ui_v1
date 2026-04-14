@@ -14,7 +14,7 @@
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       /* background: linear-gradient(135deg, #4f46e5, #6366f1); */
-      background: linear-gradient(135deg, #c6c4f3, #66d8b2,#2e2ef6);
+      background: linear-gradient(135deg, #c6c4f3, #96f1d3,#4747b2);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -119,30 +119,126 @@
   }, 3000);
 }
 
+// async function register() {
+//   const data = {
+//     name: document.getElementById("name").value,
+//     business_name: document.getElementById("business").value,
+//     email: document.getElementById("email").value,
+//     password: document.getElementById("password").value,
+//     whatsapp_number: document.getElementById("whatsapp").value
+//   };
+
+//   const res = await apiCall('/auth/register', 'POST', data);
+
+//   if (res.success) {
+//     // alert("Account created!");
+//     // window.location.href = "index.html";
+
+//     showToast("Registered Successfully");
+//     setTimeout(() => {
+//       window.location.href = "index.html";
+//     }, 3000);
+
+//   } else {
+//     document.getElementById("error").innerText = res.message;
+//   }
+// }
+
+
 async function register() {
-  const data = {
-    name: document.getElementById("name").value,
-    business_name: document.getElementById("business").value,
-    email: document.getElementById("email").value,
-    password: document.getElementById("password").value,
-    whatsapp_number: document.getElementById("whatsapp").value
-  };
+  const nameInput = document.getElementById("name");
+  const businessInput = document.getElementById("business");
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const whatsappInput = document.getElementById("whatsapp");
+  const error = document.getElementById("error");
 
-  const res = await apiCall('/auth/register', 'POST', data);
+  const name = nameInput.value.trim();
+  const business_name = businessInput.value.trim();
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
+  const whatsapp_number = whatsappInput.value.trim();
 
-  if (res.success) {
-    // alert("Account created!");
-    // window.location.href = "index.html";
+  // Reset error
+  error.innerText = "";
 
-    showToast("Registered Successfully");
-    setTimeout(() => {
-      window.location.href = "index.html";
-    }, 3000);
+  // ✅ Validation
+  if (!name) {
+    error.innerText = "Name is required";
+    nameInput.focus();
+    return;
+  }
 
-  } else {
-    document.getElementById("error").innerText = res.message;
+  if (!business_name) {
+    error.innerText = "Business name is required";
+    businessInput.focus();
+    return;
+  }
+
+  if (!email) {
+    error.innerText = "Email is required";
+    emailInput.focus();
+    return;
+  }
+
+  if (!emailInput.checkValidity()) {
+    error.innerText = "Enter a valid email";
+    emailInput.focus();
+    return;
+  }
+
+  if (!password) {
+    error.innerText = "Password is required";
+    passwordInput.focus();
+    return;
+  }
+
+  if (password.length < 6) {
+    error.innerText = "Password must be at least 6 characters";
+    passwordInput.focus();
+    return;
+  }
+
+  if (!whatsapp_number) {
+    error.innerText = "WhatsApp number is required";
+    whatsappInput.focus();
+    return;
+  }
+
+  // simple phone check (10 digits)
+  if (!/^\d{10}$/.test(whatsapp_number)) {
+    error.innerText = "Enter a valid 10-digit WhatsApp number";
+    whatsappInput.focus();
+    return;
+  }
+
+  try {
+    // ✅ API call
+    const res = await apiCall('/auth/register', 'POST', {
+      name,
+      business_name,
+      email,
+      password,
+      whatsapp_number
+    });
+
+    if (res.success) {
+      showToast("Registered Successfully");
+
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 2000);
+
+    } else {
+      error.innerText = res.message || "Registration failed";
+    }
+
+  } catch (err) {
+    error.innerText = "Something went wrong. Try again.";
+    console.error(err);
   }
 }
+
 </script>
 <div id="toast" class="toast"></div>
 

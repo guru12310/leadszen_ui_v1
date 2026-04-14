@@ -91,8 +91,11 @@
 <div class="container">
   <h2>LeadsZen Login</h2>
 
-  <input id="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Password">
+  <!-- <input id="email" type="email" placeholder="Email" required> -->
+  <input id="email" type="email" placeholder="Email" required
+  oninvalid="this.setCustomValidity('Please enter your email')"
+  oninput="this.setCustomValidity('')">
+  <input id="password" type="password" placeholder="Password" required>
 
   <button onclick="login()">Login</button>
 

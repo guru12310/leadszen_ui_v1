@@ -21,34 +21,115 @@ document.getElementById("converted").innerHTML = `
 `;
   document.getElementById("progress").innerHTML = `In Progress<br>${d.in_progress}`;
   document.getElementById("lost").innerHTML = `Lost<br>${d.lost}`;
+  document.getElementById("new").innerHTML = `Lost<br>${d.new}`;
 }
 
-async function loadLeads() {
+// async function loadLeads() {
+//   const res = await fetch(`${API}/lead`, {
+//     headers: { Authorization: "Bearer " + token }
+//   });
+
+//   const data = await res.json();
+
+//   document.getElementById("leads").innerHTML =
+//    data.data.map(l => {
+//     let cls = "new";
+//     if (l.status === "CONVERTED") cls = "converted";
+//     if (l.status === "IN_PROGRESS") cls = "progress";
+//     if (l.status === "LOST") cls = "lost";
+
+//     return `
+//       <tr>
+//         <td>${l.name}</td>
+//         <td>${l.phone}</td>
+//         <td><span class="status ${cls}">${l.status}</span></td>
+//       </tr>
+//     `;
+//   }).join('');
+
+// }
+
+
+let currentPage = 1;
+const limit = 10;
+let allLeads = [];
+
+// 🔹 Load all leads from backend
+async function loadLeads(page = 1) {
+  currentPage = page;
+
   const res = await fetch(`${API}/lead`, {
     headers: { Authorization: "Bearer " + token }
   });
 
   const data = await res.json();
 
-  document.getElementById("leads").innerHTML =
-   data.data.map(l => {
-    let cls = "new";
-    if (l.status === "CONVERTED") cls = "converted";
-    if (l.status === "IN_PROGRESS") cls = "progress";
-    if (l.status === "LOST") cls = "lost";
+  allLeads = data.data || [];
 
-    return `
-      <tr>
-        <td>${l.name}</td>
-        <td>${l.phone}</td>
-        <td><span class="status ${cls}">${l.status}</span></td>
-      </tr>
-    `;
-  }).join('');
+  renderLeads();
 }
 
+// 🔹 Render paginated leads
+function renderLeads() {
+  const start = (currentPage - 1) * limit;
+  const end = start + limit;
+
+  const paginated = allLeads.slice(start, end);
+
+  document.getElementById("leads").innerHTML =
+    paginated.map(l => {
+      let cls = "new";
+      if (l.status === "CONVERTED") cls = "converted";
+      if (l.status === "IN_PROGRESS") cls = "progress";
+      if (l.status === "LOST") cls = "lost";
+
+      return `
+        <tr>
+          <td>${l.name}</td>
+          <td>${l.phone}</td>
+          <td><span class="status ${cls}">${l.status}</span></td>
+        </tr>
+      `;
+    }).join('');
+
+  renderPagination();
+}
+
+// 🔹 Pagination UI update
+function renderPagination() {
+  const totalPages = Math.ceil(allLeads.length / limit);
+
+  document.getElementById("pageInfo").innerText =
+    `Page ${currentPage} of ${totalPages || 1}`;
+
+  const prevBtn = document.querySelector("#pagination button:first-child");
+  const nextBtn = document.querySelector("#pagination button:last-child");
+
+  prevBtn.disabled = currentPage === 1;
+  nextBtn.disabled = currentPage === totalPages || totalPages === 0;
+}
+
+// 🔹 Next page
+function nextPage() {
+  const totalPages = Math.ceil(allLeads.length / limit);
+
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderLeads();
+  }
+}
+
+// 🔹 Previous page
+function prevPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    renderLeads();
+  }
+}
+
+
 async function loadChart() {
-  const res = await fetch(`${API}/dashboard/analytics?from=2026-03-01&to=2026-03-25`, {
+  const res = await fetch(`${API}/dashboard/analytics?from=2026-03-01&to=2026-04-14`, {
     headers: { Authorization: "Bearer " + token }
   });
 

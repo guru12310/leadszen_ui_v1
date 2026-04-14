@@ -15,26 +15,61 @@ function showToast(msg) {
 
 
 async function login() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const error = document.getElementById("error");
 
-  const res = await fetch(`${API}/auth/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password })
-  });
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
 
-  const data = await res.json();
+  // Reset error
+  error.innerText = "";
 
-  if (data.success) {
-    localStorage.setItem("token", data.data.token);
-    showToast("Welcome to LeadsZen");
-    setTimeout(() => {
-      window.location.href = "dashboard.html";
-    }, 3000);
-    
-  } else {
-    document.getElementById("error").innerText = data.message;
+  // ✅ Validation
+  if (!email) {
+    error.innerText = "Email is required";
+    emailInput.focus();
+    return;
+  }
+
+  if (!emailInput.checkValidity()) {
+    error.innerText = "Enter a valid email";
+    emailInput.focus();
+    return;
+  }
+
+  if (!password) {
+    error.innerText = "Password is required";
+    passwordInput.focus();
+    return;
+  }
+
+  try {
+    // ✅ API call
+    const res = await fetch(`${API}/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      localStorage.setItem("token", data.data.token);
+
+      showToast("Welcome to LeadsZen");
+
+      setTimeout(() => {
+        window.location.href = "dashboard.html";
+      }, 3000);
+
+    } else {
+      error.innerText = data.message || "Login failed";
+    }
+
+  } catch (err) {
+    error.innerText = "Something went wrong. Try again.";
+    console.error(err);
   }
 }
 

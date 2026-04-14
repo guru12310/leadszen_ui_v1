@@ -67,7 +67,7 @@
   </div>
 
     <!-- Table -->
-  <div class="table-box">
+  <!-- <div class="table-box">
     <h3>Recent Leads</h3>
     <table>
       <thead>
@@ -79,7 +79,30 @@
       </thead>
       <tbody id="leads"></tbody>
     </table>
+  </div> -->
+
+
+  <div class="table-box">
+  <h3>Recent Leads</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="leads"></tbody>
+  </table>
+
+  <!-- ✅ ADD PAGINATION HERE -->
+  <div id="pagination" style="margin-top: 10px; text-align: center;">
+    <button onclick="prevPage()">Prev</button>
+    <span id="pageInfo" style="margin: 0 10px;"></span>
+    <button onclick="nextPage()">Next</button>
   </div>
+</div>
   <!-- Chart -->
   <div class="chart-box">
     <h3>Lead Analytics</h3>

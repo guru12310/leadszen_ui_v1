@@ -58,11 +58,18 @@ body {
 .card:hover {
   transform: translateY(-5px);
 }
-
+/* 
 .blue { background: linear-gradient(135deg, #6366f1, #4f46e5); }
 .green { background: linear-gradient(135deg, #22c55e, #16a34a); }
 .orange { background: linear-gradient(135deg, #f59e0b, #d97706); }
-.red { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.red { background: linear-gradient(135deg, #ef4444, #dc2626); } */
+
+
+
+.blue { background: linear-gradient(135deg, #4547ea, #c2bffb); }
+.green { background: linear-gradient(135deg, #30b661, #a3f1c0); }
+.orange { background: linear-gradient(135deg, #f7a10d, #ebc498); }
+.red { background: linear-gradient(135deg, #f02525, #ea9d9d); }
 
 /* Chart container */
 .chart-box {
@@ -153,7 +160,7 @@ tr {
 .avatar {
   width: 40px;
   height: 40px;
-  background: #6366f1;
+  background: #191a32;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -449,21 +456,6 @@ tr {
 }
 
 
-/* .toast {
-  visibility: hidden;
-  min-width: 250px;
-  background: #111827;
-  color: #fff;
-  text-align: center;
-  padding: 12px;
-  border-radius: 8px;
-  position: fixed;
-  top: 20px;
-  right: 675px;
-  z-index: 999;
-  opacity: 0;
-  transition: 0.3s;
-} */
 
 .toast {
   visibility: hidden;
@@ -485,6 +477,18 @@ tr {
 .toast.show {
   visibility: visible;
   opacity: 1;
+}
+
+
+#pagination button {
+  padding: 6px 12px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+#pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 

@@ -24,31 +24,31 @@
 <div class="main">
 
       <div class="topbar">
-
-  <div>
-    <h2 id="welcome">Welcome</h2>
-    <p class="sub">Here’s your business overview</p>
-  </div>
-
-<div class="profile" onclick="toggleMenu(event)">
-    <span id="username">User</span>
-    <div class="avatar" id="avatar">U</div>
-
-    <!-- Dropdown -->
-    <div class="dropdown" id="dropdown">
-      <div class="user-info">
-        <strong id="drop-name">User</strong><br>
-        <small id="drop-email">email</small>
+      
+        <div>
+          <h2 id="welcome">Welcome</h2>
+          <p class="sub">Here’s your business overview</p>
+        </div>
+      
+        <div class="profile" onclick="toggleMenu(event)">
+          <span id="username">User</span>
+          <div class="avatar" id="avatar">U</div>
+      
+          <!-- Dropdown -->
+          <div class="dropdown" id="dropdown">
+            <div class="user-info">
+              <strong id="drop-name">User</strong><br>
+              <small id="drop-email">email</small>
+            </div>
+      
+            <hr>
+      
+            <div class="menu-item" onclick="goProfile()">Edit Profile</div>
+            <div class="menu-item logout" onclick="logout()">Logout</div>
+          </div>
+        </div>
+      
       </div>
-
-      <hr>
-
-      <div class="menu-item" onclick="goProfile()">Edit Profile</div>
-      <div class="menu-item logout" onclick="logout()">Logout</div>
-    </div>
-  </div>
-
-</div>
   <!-- Top -->
   <div class="topbar">
     <h2>Leads Management</h2>
@@ -104,7 +104,7 @@
 </div>
 
 <!-- Manual Lead Modal -->
-<div id="leadModal" class="modal">
+<!-- <div id="leadModal" class="modal">
   <div class="modal-content">
     <h3>Add Manual Lead</h3>
 
@@ -115,8 +115,23 @@
     <button onclick="saveLead()">Save</button>
     <button onclick="closeModal()" class="cancel">Cancel</button>
   </div>
-</div>
+</div> -->
 
+<div id="leadModal" class="modal">
+  <div class="modal-content">
+    <h3>Add Manual Lead</h3>
+
+    <input id="m_name" placeholder="Name">
+    <input id="m_phone" placeholder="Phone">
+    <input id="m_location" placeholder="Location">
+
+    <!-- ✅ Error message -->
+    <p id="leadError" style="color:red; font-size:14px;"></p>
+
+    <button onclick="saveLead()">Save</button>
+    <button onclick="closeModal()" class="cancel">Cancel</button>
+  </div>
+</div>
 
 
 <script src="./js/api.js"></script>
