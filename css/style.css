@@ -169,8 +169,15 @@ tr {
   font-weight: bold;
 }
 
-/* Profile Card */
+.profile-wrapper {
+  display: flex;
+  justify-content: center;   /* horizontal center */
+  align-items: center;       /* vertical center */
+  min-height: 80vh;          /* full screen feel */
+}
+
 .profile-card {
+  width: 100%;
   max-width: 520px;
   background: white;
   padding: 25px;

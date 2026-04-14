@@ -98,24 +98,9 @@
 <button onclick="nextPage()" id="nextBtn">Next</button>
 
 </div>
-
-
-
 </div>
 
 <!-- Manual Lead Modal -->
-<!-- <div id="leadModal" class="modal">
-  <div class="modal-content">
-    <h3>Add Manual Lead</h3>
-
-    <input id="m_name" placeholder="Name">
-    <input id="m_phone" placeholder="Phone">
-    <input id="m_location" placeholder="Location">
-
-    <button onclick="saveLead()">Save</button>
-    <button onclick="closeModal()" class="cancel">Cancel</button>
-  </div>
-</div> -->
 
 <div id="leadModal" class="modal">
   <div class="modal-content">
@@ -133,10 +118,57 @@
   </div>
 </div>
 
+<script>
+  async function loadUser() {
+  const res = await apiCall('/client/me'); // already gives data
+
+  if (!res || !res.success) return;
+
+  const d = res.data;
+
+  // ✅ Set all UI data
+  document.getElementById("welcome").innerText = `Welcome, ${d.name}`;
+  document.getElementById("username").innerText = d.name;
+  document.getElementById("drop-name").innerText = d.name;
+  document.getElementById("drop-email").innerText = d.email;
+
+  // ✅ Avatar (IMPORTANT FIX)
+  const avatar = document.getElementById("avatar");
+
+  if (avatar) {
+    avatar.innerText = d.name ? d.name[0].toUpperCase() : "U";
+  }
+}
+
+function toggleMenu(event) {
+  event.stopPropagation(); // 🔥 prevents immediate close
+
+  const menu = document.getElementById("dropdown");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+  menu.classList.toggle("show");
+}
+
+function goProfile() {
+  window.location.href = "profile.html";
+}
+
+function logout() {
+  localStorage.removeItem("token");
+  window.location.href = "index.html";
+}
+
+</script>
 
 <script src="./js/api.js"></script>
 <script src="./js/leads.js"></script>
-<script src="./js/dashboard.js"></script>
+
+<script>
+loadUser()
+toggleMenu()
+goProfile()
+logout()
+</script>
+<!-- <script src="./js/dashboard.js"></script> -->
 
 </body>
 </html>

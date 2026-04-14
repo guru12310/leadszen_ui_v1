@@ -58,6 +58,7 @@
   </div>
 
   <!-- Profile Card -->
+   <div class="profile-wrapper">
   <div class="card profile-card">
 
     <label>Name</label>
@@ -80,13 +81,49 @@
     <p id="msg"></p>
 
   </div>
+  </div>
 
 </div>
 
-<script src="js/api.js"></script>
-<script>
+<!-- <script src="js/api.js"></script> -->
 
-  function toggleMenu(event) {
+<script>
+async function loadProfile() {
+  const res = await apiCall('/client/me');
+
+  if (res.success) {
+    const d = res.data;
+
+    document.getElementById("name").value = d.name || "";
+    document.getElementById("email").value = d.email || "";
+    document.getElementById("business").value = d.business_name || "";
+    document.getElementById("whatsapp").value = d.whatsapp_number || "";
+    document.getElementById("location").value = d.location || "";
+  }
+}
+
+async function loadUser() {
+  const res = await apiCall('/client/me'); // already gives data
+
+  if (!res || !res.success) return;
+
+  const d = res.data;
+
+  // ✅ Set all UI data
+  document.getElementById("welcome").innerText = `Welcome, ${d.name}`;
+  document.getElementById("username").innerText = d.name;
+  document.getElementById("drop-name").innerText = d.name;
+  document.getElementById("drop-email").innerText = d.email;
+
+  // ✅ Avatar (IMPORTANT FIX)
+  const avatar = document.getElementById("avatar");
+
+  if (avatar) {
+    avatar.innerText = d.name ? d.name[0].toUpperCase() : "U";
+  }
+}
+
+function toggleMenu(event) {
   event.stopPropagation(); // 🔥 prevents immediate close
 
   const menu = document.getElementById("dropdown");
@@ -105,61 +142,9 @@ function logout() {
 
 </script>
 
-<script>
-async function loadProfile() {
-  const res = await apiCall('/client/me');
-
-  if (res.success) {
-    const d = res.data;
-
-    document.getElementById("name").value = d.name || "";
-    document.getElementById("email").value = d.email || "";
-    document.getElementById("business").value = d.business_name || "";
-    document.getElementById("whatsapp").value = d.whatsapp_number || "";
-    document.getElementById("location").value = d.location || "";
-  }
-}
-
-async function updateProfile() {
-  const data = {
-    name: document.getElementById("name").value,
-    business_name: document.getElementById("business").value,
-    whatsapp_number: document.getElementById("whatsapp").value,
-    location: document.getElementById("location").value
-  };
-
-  const res = await apiCall('/client/update', 'PUT', data);
-
-  const msg = document.getElementById("msg");
-
-  if (res.success) {
-    msg.style.color = "green";
-    msg.innerText = "Profile updated successfully ✅";
-  } else {
-    msg.style.color = "red";
-    msg.innerText = res.message;
-  }
-}
-
-loadProfile();
-</script>
-
 <script src="js/api.js"></script>
 
 <script>
-async function loadProfile() {
-  const res = await apiCall('/client/me');
-
-  if (res.success) {
-    const d = res.data;
-
-    document.getElementById("name").value = d.name || "";
-    document.getElementById("email").value = d.email || "";
-    document.getElementById("business").value = d.business_name || "";
-    document.getElementById("whatsapp").value = d.whatsapp_number || "";
-    document.getElementById("location").value = d.location || "";
-  }
-}
 
 async function updateProfile() {
   const data = {
@@ -183,6 +168,10 @@ async function updateProfile() {
 }
 
 loadProfile();
+loadUser()
+toggleMenu()
+goProfile()
+logout()
 </script>
 
 </body>
