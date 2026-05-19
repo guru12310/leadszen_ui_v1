@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <!-- ADD THIS -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.png">
 <link rel="shortcut icon" href="./assets/favicon.png">
 </head>
@@ -13,81 +14,138 @@
 <head>
 
   <title>Login</title>
-  <style>
+<style>
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-  margin: 0;
-  height: 100vh;
+  min-height: 100vh;
 
   background: url("./images/imge2.jpg") no-repeat center center/cover;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
+.container {
+  background: rgba(255,255,255,0.95);
 
-    .container {
-      background: white;
-      padding: 40px;
-      border-radius: 16px;
-      width: 350px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      text-align: center;
-    }
+  padding: 40px;
+  border-radius: 16px;
 
-    h2 {
-      margin-bottom: 20px;
-      color: #0f172a;
-    }
+  width: 100%;
+  max-width: 350px;
 
-    input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 14px;
-    }
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 
-    input:focus {
-      outline: none;
-      border-color: #6366f1;
-    }
+  text-align: center;
 
-    button {
-      width: 100%;
-      padding: 12px;
-      background: #6366f1;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
+  backdrop-filter: blur(5px);
+}
 
-    button:hover {
-      background: #4f46e5;
-    }
+h2 {
+  margin-bottom: 20px;
+  color: #0f172a;
+  font-size: 28px;
+}
 
-    .link {
-      margin-top: 15px;
-      font-size: 14px;
-    }
+input {
+  width: 100%;
 
-    .link a {
-      color: #6366f1;
-      text-decoration: none;
-      font-weight: bold;
-    }
+  padding: 12px;
+  margin: 10px 0;
 
-    #error {
-      color: red;
-      margin-top: 10px;
-      font-size: 13px;
-    }
-  </style>
+  border-radius: 8px;
+  border: 1px solid #ddd;
+
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+}
+
+button {
+  width: 100%;
+  height: 45px;
+
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  margin-top: 10px;
+
+  transition: 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(79,70,229,0.25);
+}
+
+.link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.link a {
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#error {
+  color: red;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width: 480px){
+
+  body{
+    padding: 15px;
+  }
+
+  .container{
+    padding: 30px 20px;
+    border-radius: 14px;
+  }
+
+  h2{
+    font-size: 24px;
+  }
+
+  input{
+    font-size: 15px;
+  }
+
+  button{
+    height: 44px;
+    font-size: 15px;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
@@ -106,7 +164,7 @@ body {
   <p id="error"></p>
 
   <div class="link">
-    <!-- New user? <a href="register.html">Register</a> -->
+    New user? <a href="register.html">Register</a>
   </div>
 </div>
 

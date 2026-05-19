@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <!-- ADD THIS -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.png">
 <link rel="shortcut icon" href="./assets/favicon.png">
 </head>
@@ -16,8 +17,9 @@
 </head>
 
 <body>
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
 
-
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
 
 
   <div class="sidebar">
@@ -26,7 +28,6 @@
     <a href="leads.html">Leads</a>
     <a href="profile.html">Profile</a>
   </div>
-
 
 
   <div class="main">
@@ -69,20 +70,6 @@
       <div class="card red" id="lost"></div>
     </div>
 
-    <!-- Table -->
-    <!-- <div class="table-box">
-    <h3>Recent Leads</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Phone</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody id="leads"></tbody>
-    </table>
-  </div> -->
 
 
     <div class="table-box">
@@ -118,6 +105,31 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/dashboard.js"></script>
+
+
+
+  <script>
+
+function toggleSidebar() {
+
+  document.querySelector(".sidebar")
+    .classList.toggle("active");
+
+  document.getElementById("overlay")
+    .classList.toggle("show");
+}
+
+function closeSidebar() {
+
+  document.querySelector(".sidebar")
+    .classList.remove("active");
+
+  document.getElementById("overlay")
+    .classList.remove("show");
+}
+
+</script>
+
 </body>
 
 </html>

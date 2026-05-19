@@ -608,3 +608,185 @@ tr {
   }
 
 }
+
+
+
+/* ================= FULL MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* MAIN */
+  .main {
+    margin-left: 0 !important;
+    padding: 70px 15px 20px;
+  }
+
+  /* TOPBAR */
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .topbar h2 {
+    font-size: 22px;
+  }
+
+  /* CARDS */
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .card {
+    padding: 18px;
+    font-size: 15px;
+  }
+
+  /* FILTER BOX */
+  .filter-box {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .filter-box input,
+  .filter-box select,
+  .apply-btn {
+    width: 100%;
+  }
+
+  /* TABLE RESPONSIVE */
+  .table-box {
+    overflow-x: auto;
+    padding: 15px;
+  }
+
+  table {
+    min-width: 700px;
+  }
+
+  th,
+  td {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  /* STATUS CELL */
+  .status-cell {
+    min-width: 180px;
+  }
+
+  /* PROFILE CARD */
+  .profile-wrapper {
+    padding: 15px;
+  }
+
+  .profile-card {
+    padding: 20px;
+  }
+
+  /* MODAL */
+  .modal-content {
+    width: 92%;
+    margin: 80px auto;
+    padding: 20px;
+  }
+
+  .modal input {
+    width: 100%;
+  }
+
+  /* PAGINATION */
+  .pagination {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .pagination button {
+    padding: 8px 12px;
+  }
+
+  /* DROPDOWN */
+  .dropdown {
+    width: 200px;
+    right: -10px;
+  }
+
+  /* TOAST */
+  .toast {
+    width: 90%;
+    min-width: auto;
+  }
+
+}
+
+/* EXTRA SMALL MOBILE */
+
+@media (max-width: 480px) {
+
+  .main {
+    padding: 65px 12px 20px;
+  }
+
+  .card {
+    font-size: 14px;
+  }
+
+  .topbar h2 {
+    font-size: 20px;
+  }
+
+  .sub {
+    font-size: 12px;
+  }
+
+  .profile-card input,
+  .filter-box input,
+  .filter-box select {
+    font-size: 14px;
+  }
+
+  .apply-btn,
+  .pagination button,
+  .topbar button {
+    font-size: 14px;
+  }
+
+}
+
+
+/* MOBILE SIDEBAR FIX */
+
+@media (max-width: 768px) {
+
+  .sidebar {
+
+    position: fixed;
+
+    top: 0;
+    left: -250px;   /* hidden initially */
+
+    width: 220px;
+    height: 100vh;
+
+    background: #0f172a;
+
+    padding: 20px;
+
+    transition: left 0.3s ease;
+
+    z-index: 1001;
+  }
+
+  /* SHOW SIDEBAR */
+
+  .sidebar.active {
+    left: 0;
+  }
+
+}
