@@ -4,6 +4,7 @@
 <head>
   <title>Leads</title>
   <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ADD THIS -->
 <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.png">
@@ -17,12 +18,18 @@
 
 <body>
 
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+
   <div class="sidebar">
     <h3>LeadsZen</h3>
     <a href="dashboard.html">Dashboard</a>
     <a href="leads.html">Leads</a>
     <a href="profile.html">Profile</a>
   </div>
+
 
   <div class="main">
 
@@ -172,6 +179,27 @@
     logout()
   </script>
   <!-- <script src="./js/dashboard.js"></script> -->
+  <script>
+
+function toggleSidebar() {
+
+  document.querySelector(".sidebar")
+    .classList.toggle("active");
+
+  document.getElementById("overlay")
+    .classList.toggle("show");
+}
+
+function closeSidebar() {
+
+  document.querySelector(".sidebar")
+    .classList.remove("active");
+
+  document.getElementById("overlay")
+    .classList.remove("show");
+}
+
+</script>
 
 </body>
 
