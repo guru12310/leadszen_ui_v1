@@ -140,6 +140,16 @@
       menu.classList.toggle("show");
     }
 
+// close dropdown when clicking outside
+document.addEventListener("click", function (event) {
+  const profile = document.querySelector(".profile");
+  const dropdown = document.getElementById("dropdown");
+
+  if (!profile.contains(event.target)) {
+    dropdown.style.display = "none";
+  }
+});
+
     function goProfile() {
       window.location.href = "profile.html";
     }

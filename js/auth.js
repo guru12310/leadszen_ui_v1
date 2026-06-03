@@ -1,4 +1,5 @@
-const API = "https://leadszen-v1.onrender.com/api";
+// const API = "https://leadszen-v1.onrender.com/api";
+const API = "http://localhost:3000/api";
 
 
 
@@ -44,33 +45,114 @@ async function login() {
     return;
   }
 
+  // try {
+  //   // ✅ API call
+  //   const res = await fetch(`${API}/auth/login`, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ email, password })
+  //   });
+
+  //   const data = await res.json();
+
+  //   if (data.success) {
+  //     localStorage.setItem("token", data.data.token);
+
+  //     showToast("Welcome to LeadsZen");
+
+  //     setTimeout(() => {
+  //       window.location.href = "dashboard.html";
+  //     }, 3000);
+
+  //   } else {
+  //     error.innerText = data.message || "Login failed";
+  //   }
+
+  // } catch (err) {
+  //   error.innerText = "Something went wrong. Try again.";
+  //   console.error(err);
+  // }
+
   try {
-    // ✅ API call
-    const res = await fetch(`${API}/auth/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
-    });
 
-    const data = await res.json();
+  const res = await fetch(`${API}/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      email,
+      password
+    })
+  });
 
-    if (data.success) {
-      localStorage.setItem("token", data.data.token);
+  const data = await res.json();
+
+  if (data.success) {
+
+    const token = data.data.token;
+    console.log("----token-----",token)
+    localStorage.setItem("token", token);
+
+    showToast("Login Successful");
+
+    // Check subscription status
+    const subRes = await fetch(
+      `${API}/payment/subscription`,
+      {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      }
+    );
+
+    const subData = await subRes.json();
+
+    console.log("----subData-----",subData)
+
+
+    if (
+      subData.success &&
+      subData.data.subscription_status === "ACTIVE"
+    ) {
+    console.log("----ACTIVE-----")
 
       showToast("Welcome to LeadsZen");
+
+      // setTimeout(() => {
+      //   window.location.href = "dashboard.html";
+      // }, 1500);
 
       setTimeout(() => {
         window.location.href = "dashboard.html";
       }, 3000);
 
     } else {
-      error.innerText = data.message || "Login failed";
+
+      showToast("Choose a plan to continue");
+
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 1500);
+
     }
 
-  } catch (err) {
-    error.innerText = "Something went wrong. Try again.";
-    console.error(err);
+  } else {
+
+    error.innerText =
+      data.message || "Login failed";
+
   }
+
+} catch (err) {
+
+  console.error(err);
+
+  error.innerText =
+    "Something went wrong. Please try again.";
+
+}
 }
 
 

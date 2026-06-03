@@ -167,6 +167,16 @@
       window.location.href = "index.html";
     }
 
+    // close dropdown when clicking outside
+document.addEventListener("click", function (event) {
+  const profile = document.querySelector(".profile");
+  const dropdown = document.getElementById("dropdown");
+
+  if (!profile.contains(event.target)) {
+    dropdown.style.display = "none";
+  }
+});
+
   </script>
 
   <script src="./js/api.js"></script>

@@ -1,254 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leadszen - Smart Lead Automation</title>
-<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.png">
-<link rel="shortcut icon" href="./assets/favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leadszen - Smart Lead Automation</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.png">
+  <link rel="shortcut icon" href="./assets/favicon.png">
 
-<style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #f6f8fc;
-  color: #1e293b;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f6f8fc;
+      color: #1e293b;
+    }
 
-/* HEADER */
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 50px;
-  background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 50px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
 
-header h2 {
-  color: #4f46e5;
-}
+    header h2 {
+      color: #4f46e5;
+    }
 
-.btn {
-  height: 42px;               /* 👈 fixed height */
-  padding: 0 20px;            /* remove vertical padding */
-  background: linear-gradient(135deg, #6366f1, #4f46e5);
-  color: white;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
+    .btn {
+      height: 42px;
+      /* 👈 fixed height */
+      padding: 0 20px;
+      /* remove vertical padding */
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      color: white;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
 
-  display: inline-flex;       /* 👈 center content */
-  align-items: center;
-  justify-content: center;
+      display: inline-flex;
+      /* 👈 center content */
+      align-items: center;
+      justify-content: center;
 
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-}
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
 
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 100px 20px;
-}
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+    }
 
-.hero h1 {
-  font-size: 48px;
-}
+    .hero h1 {
+      font-size: 48px;
+    }
 
-.hero p {
-  margin: 20px auto;
-  max-width: 600px;
-  color: #64748b;
-}
+    .hero p {
+      margin: 20px auto;
+      max-width: 600px;
+      color: #64748b;
+    }
 
-/* FEATURES */
-.features {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 50px;
-  flex-wrap: wrap;
-}
+    /* FEATURES */
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 50px;
+      flex-wrap: wrap;
+    }
 
-.feature {
-  background: white;
-  padding: 25px;
-  width: 280px;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-}
+    .feature {
+      background: white;
+      padding: 25px;
+      width: 280px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    }
 
-/* PRICING */
-.section {
-  padding: 70px 20px;
-  text-align: center;
-}
+    /* PRICING */
+    .section {
+      padding: 70px 20px;
+      text-align: center;
+    }
 
-.pricing-container {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-}
+    .pricing-container {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
 
-.card {
-  background: white;
-  padding: 30px;
-  width: 280px;
-  border-radius: 12px;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.08);
-}
+    .card {
+      background: white;
+      padding: 30px;
+      width: 280px;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    }
 
-.card.highlight {
-  border: 2px solid #6366f1;
-  transform: scale(1.05);
-}
+    .card.highlight {
+      border: 2px solid #6366f1;
+      transform: scale(1.05);
+    }
 
-.price {
-  font-size: 30px;
-  color: #4f46e5;
-  margin: 15px 0;
-}
+    .price {
+      font-size: 30px;
+      color: #4f46e5;
+      margin: 15px 0;
+    }
 
-/* TESTIMONIAL */
-.testimonial {
-  max-width: 700px;
-  margin: auto;
-  color: #475569;
-}
+    /* TESTIMONIAL */
+    .testimonial {
+      max-width: 700px;
+      margin: auto;
+      color: #475569;
+    }
 
-/* FOOTER */
-footer {
-  background: #0f172a;
-  color: #94a3b8;
-  padding: 30px;
-  text-align: center;
-}
+    /* FOOTER */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 30px;
+      text-align: center;
+    }
 
-/* LOGIN MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-}
+    /* LOGIN MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+    }
 
-.modal-box {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  width: 320px;
-  text-align: center;
-}
-</style>
+    .modal-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 320px;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <h2>Leadszen</h2>
-  <a href="/login.html" class="btn">Login</a>
-</header>
+  <header>
+    <h2>Leadszen</h2>
+    <a href="/login.html" class="btn">Login</a>
+  </header>
 
-<section class="hero">
-  <h1>Turn Every Lead Into Revenue</h1>
-  <p>
-    Leadszen helps businesses capture leads, automate follow-ups, and convert prospects into loyal customers effortlessly.
-  </p>
+  <section class="hero">
+    <h1>Turn Every Lead Into Revenue</h1>
+    <p>
+      Leadszen helps businesses capture leads, automate follow-ups, and convert prospects into loyal customers
+      effortlessly.
+    </p>
     <a href="/login.html" class="btn">Get Started</a>
-</section>
+  </section>
 
-<section class="features">
-  <div class="feature">
-    <h3>Lead Capture</h3>
-    <p>Capture leads from ads, forms, and landing pages automatically.</p>
-  </div>
-  <div class="feature">
-    <h3>Automation</h3>
-    <p>Send instant follow-ups via email, SMS, or WhatsApp.</p>
-  </div>
-  <div class="feature">
-    <h3>CRM System</h3>
-    <p>Manage all your leads and customers in one place.</p>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Pricing Plans</h2>
-  <div class="pricing-container">
-
-    <div class="card">
-      <h3>Basic</h3>
-      <p class="price">₹199</p>
-      <p>Lead Capture + CRM</p>
-      <button class="btn" onclick="buyPlan('basic')">Buy Now</button>
+  <section class="features">
+    <div class="feature">
+      <h3>Lead Capture</h3>
+      <p>Capture leads from ads, forms, and landing pages automatically.</p>
     </div>
-
-    <div class="card highlight">
+    <div class="feature">
       <h3>Automation</h3>
-      <p class="price">₹499</p>
-      <p>CRM + Automation + Follow-ups</p>
-      <button class="btn" onclick="buyPlan('automation')">Buy Now</button>
+      <p>Send instant follow-ups via email, SMS, or WhatsApp.</p>
     </div>
-
-    <div class="card">
-      <h3>Premium</h3>
-      <p class="price">₹999</p>
-      <p>Advanced Analytics + Integrations</p>
-      <button class="btn" onclick="buyPlan('premium')">Buy Now</button>
+    <div class="feature">
+      <h3>CRM System</h3>
+      <p>Manage all your leads and customers in one place.</p>
     </div>
+  </section>
 
+  <section class="section">
+    <h2>Pricing Plans</h2>
+    <div class="pricing-container">
+
+      <div class="card">
+        <h3>Basic</h3>
+        <p class="price">₹199</p>
+        <p>Lead Capture + CRM</p>
+        <button class="btn" onclick="buyPlan('basic')">Buy Now</button>
+      </div>
+
+      <div class="card highlight">
+        <h3>Automation</h3>
+        <p class="price">₹499</p>
+        <p>CRM + Automation + Follow-ups</p>
+        <button class="btn" onclick="buyPlan('automation')">Buy Now</button>
+      </div>
+
+      <div class="card">
+        <h3>Premium</h3>
+        <p class="price">₹999</p>
+        <p>Advanced Analytics + Integrations</p>
+        <button class="btn" onclick="buyPlan('premium')">Buy Now</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>What Our Users Say</h2>
+    <p class="testimonial">
+      "Leadszen completely changed how we handle leads. Our conversion rate increased by 3x!"
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>FAQ</h2>
+    <p>Q: Is there a free trial?<br>A: Yes, 3-day free trial available.</p>
+    <p>Q: Can I cancel anytime?<br>A: Yes, no long-term commitments.</p>
+  </section>
+
+  <footer>
+    <p>© 2026 Leadszen</p>
+    <p>Email: support@leadszen.in</p>
+    <a href="/privacy-policy.html">Privacy</a> |
+    <a href="/terms.html">Terms</a> |
+    <a href="/refund-policy.html">Refund</a>
+  </footer>
+
+  <!-- LOGIN -->
+  <div class="modal" id="loginModal">
+    <div class="modal-box">
+      <h3>Login</h3>
+      <input id="email" placeholder="Email"><br><br>
+      <input id="password" type="password" placeholder="Password"><br><br>
+      <button class="btn" onclick="login()">Login</button>
+    </div>
   </div>
-</section>
 
-<section class="section">
-  <h2>What Our Users Say</h2>
-  <p class="testimonial">
-    "Leadszen completely changed how we handle leads. Our conversion rate increased by 3x!"
-  </p>
-</section>
+  <script>
+    function openLogin() {
+      document.getElementById("loginModal").style.display = "flex";
+    }
 
-<section class="section">
-  <h2>FAQ</h2>
-  <p>Q: Is there a free trial?<br>A: Yes, 3-day free trial available.</p>
-  <p>Q: Can I cancel anytime?<br>A: Yes, no long-term commitments.</p>
-</section>
+    function login() {
+      alert("Connect backend login here");
+    }
 
-<footer>
-  <p>© 2026 Leadszen</p>
-  <p>Email: support@leadszen.in</p>
-  <a href="/privacy-policy.html">Privacy</a> |
-  <a href="/terms.html">Terms</a> |
-  <a href="/refund-policy.html">Refund</a>
-</footer>
+    function buyPlan(plan) {
+      alert("Selected: " + plan + " (Next Razorpay)");
+    }
 
-<!-- LOGIN -->
-<div class="modal" id="loginModal">
-  <div class="modal-box">
-    <h3>Login</h3>
-    <input id="email" placeholder="Email"><br><br>
-    <input id="password" type="password" placeholder="Password"><br><br>
-    <button class="btn" onclick="login()">Login</button>
-  </div>
-</div>
 
-<script>
-function openLogin(){
-  document.getElementById("loginModal").style.display="flex";
-}
+  </script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-function login(){
-  alert("Connect backend login here");
-}
 
-function buyPlan(plan){
-  alert("Selected: " + plan + " (Next Razorpay)");
-}
-</script>
+  <script>
+
+    async function buyPlan(plan) {
+
+      const token = localStorage.getItem("token");
+
+      // const API = "https://leadszen-v1.onrender.com/api";
+      const API = "http://localhost:3000/api";
+
+      if (!token) {
+
+        alert("Please login first");
+
+        window.location.href = "login.html";
+
+        return;
+      }
+
+      try {
+
+        const response = await fetch(
+          `${API}/payment/create-order`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              plan: plan.toUpperCase()
+            })
+          }
+        );
+
+        const data = await response.json();
+
+        if (!data.success) {
+
+          alert(data.message);
+
+          return;
+        }
+
+        const order = data.order;
+
+        const options = {
+
+          key: data.key,
+
+          amount: order.amount,
+
+          currency: order.currency,
+
+          name: "LeadsZen",
+
+          description: plan + " Plan",
+
+          order_id: order.id,
+
+          handler: async function (response) {
+
+            await verifyPayment(response);
+
+          },
+
+          theme: {
+            color: "#6366f1"
+          }
+
+        };
+        console.log("------options--------", options);
+
+        const rzp = new Razorpay(options);
+
+        rzp.on('payment.failed', function (response) {
+          console.log("PAYMENT FAILED");
+
+          console.log('---------resp------', response);
+
+          console.log('------err--------', response.error);
+
+        });
+
+        rzp.open();
+
+      } catch (err) {
+
+        console.error('-----err-----', err);
+
+        alert("Payment initialization failed");
+
+      }
+
+    }
+
+  </script>
+
+
+  <script>
+
+    // const API = "https://leadszen-v1.onrender.com/api";
+    const API = "http://localhost:3000/api";
+
+    async function verifyPayment(paymentData) {
+
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(`
+    ${API}/payment/verify`,
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+
+          body: JSON.stringify(paymentData)
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+
+        alert("Payment Successful");
+
+        window.location.href = "dashboard.html";
+
+      } else {
+
+        alert("Payment Verification Failed");
+
+      }
+
+    }
+
+  </script>
 
 </body>
+
 </html>
