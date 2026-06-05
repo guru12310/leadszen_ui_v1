@@ -130,11 +130,12 @@ async function login() {
 
     } else {
 
-      showToast("Choose a plan to continue");
+      showToast("Please subscribe to a plan to access LeadsZen");
 
       setTimeout(() => {
-        window.location.href = "index.html";
-      }, 1500);
+        // window.location.href = "index.html";
+        window.location.href = "index.html?subscription=required";
+      }, 3000);
 
     }
 

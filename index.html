@@ -148,6 +148,53 @@
       width: 320px;
       text-align: center;
     }
+
+
+.subscription-alert {
+  display: none;
+
+  background: #6366f1;
+  color: #ffffff;
+
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 800px;
+
+  border-radius: 8px;
+  border: 2px solid #ffffff;
+
+  text-align: center;
+  font-weight: 600;
+  line-height: 1.6;
+
+  animation: pulseAlert 2s infinite;
+}
+
+.subs {
+  color: #0dfe00;
+  font-weight: 700;
+}
+
+@keyframes pulseAlert {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(99, 102, 241, 0.4);
+    border-color: #ffffff;
+  }
+
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.9);
+    border-color: #0dfe00;
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(99, 102, 241, 0.4);
+    border-color: #ffffff;
+  }
+}
+
   </style>
 </head>
 
@@ -167,6 +214,12 @@
     <a href="/login.html" class="btn">Get Started</a>
   </section>
 
+  
+  <div id="subscriptionAlert" class="subscription-alert">
+🚀 Your account is ready.<br>
+Choose a <b class="subs">subscription</b> plan below 👇 to unlock all LeadsZen features and automation tools.
+</div>
+
   <section class="features">
     <div class="feature">
       <h3>Lead Capture</h3>
@@ -182,29 +235,30 @@
     </div>
   </section>
 
+
   <section class="section">
     <h2>Pricing Plans</h2>
     <div class="pricing-container">
 
       <div class="card">
         <h3>Basic</h3>
-        <p class="price">₹199</p>
+        <p class="price">₹199<span>/month</span></p>
         <p>Lead Capture + CRM</p>
-        <button class="btn" onclick="buyPlan('basic')">Buy Now</button>
+        <button class="btn" onclick="buyPlan('basic')">Subscribe Now</button>
       </div>
 
       <div class="card highlight">
         <h3>Automation</h3>
-        <p class="price">₹499</p>
+        <p class="price">₹499<span>/month</span></p>
         <p>CRM + Automation + Follow-ups</p>
-        <button class="btn" onclick="buyPlan('automation')">Buy Now</button>
+        <button class="btn" onclick="buyPlan('automation')">Subscribe Now</button>
       </div>
 
       <div class="card">
         <h3>Premium</h3>
-        <p class="price">₹999</p>
+        <p class="price">₹999<span>/month</span></p>
         <p>Advanced Analytics + Integrations</p>
-        <button class="btn" onclick="buyPlan('premium')">Buy Now</button>
+        <button class="btn" onclick="buyPlan('premium')">Subscribe Now</button>
       </div>
 
     </div>
@@ -267,15 +321,20 @@
 
       const API = "https://leadszen-v1.onrender.com/api";
       // const API = "http://localhost:3000/api";
+if (!token) {
 
-      if (!token) {
+  // showToast(
+  //   "🚀 Create an account and subscribe to a plan to get started with LeadsZen."
+  // );
 
-        alert("Please login first");
+  alert("🚀 Create an account and subscribe to a plan to get started with LeadsZen.");
 
-        window.location.href = "login.html";
+  setTimeout(() => {
+    window.location.href = "login.html";
+  }, 3000);
 
-        return;
-      }
+  return;
+}
 
       try {
 
@@ -396,7 +455,27 @@
 
     }
 
+    const params =new URLSearchParams( window.location.search);
+
+if(params.get("subscription")=== "required"){
+   document
+   .getElementById("subscriptionAlert")
+   .style.display = "block";
+}
+
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      t.innerText = msg;
+      t.className = "toast show";
+
+      setTimeout(() => {
+        t.className = "toast";
+      }, 3000);
+    }
+
+
   </script>
+<div id="toast" class="toast"></div>
 
 </body>
 
