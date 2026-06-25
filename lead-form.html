@@ -1,201 +1,184 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>LeadsZen</title>
-  <link rel="stylesheet" href="css/style.css">
-
-  <!-- ADD THIS -->
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.png">
-<link rel="shortcut icon" href="./assets/favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeadsZen - Get Details</title>
+<link rel="icon" type="image/png" href="./assets/favicon.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{
+min-height:100vh;
+background:url("./images/leadsbg.png") center/cover no-repeat;
+display:flex;justify-content:center;align-items:center;padding:20px}
+.container{
+width:100%;max-width:430px;background:rgba(255,255,255,.96);
+backdrop-filter:blur(10px);border-radius:22px;padding:40px;
+box-shadow:0 20px 45px rgba(0,0,0,.18);animation:fade .5s}
+.logo-box{
+width:72px;height:72px;margin:0 auto 18px;        background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #4f46e5
+    );;border-radius:18px;
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 12px 25px rgba(99,102,241,.18)}
+.logo-box img{width:52px;height:52px}
+h2{text-align:center;color:#111827;font-size:30px;margin-bottom:8px}
+.subtitle{text-align:center;color:#64748b;font-size:15px;line-height:1.6;margin-bottom:25px}
+.input-group{margin-bottom:14px}
+input,textarea{
+width:100%;padding:14px 16px;border:1px solid #ddd;border-radius:12px;
+font-size:15px;transition:.3s}
+textarea{resize:none;min-height:110px}
+input:focus,textarea:focus{
+outline:none;border-color:#6366f1;
+box-shadow:0 0 0 4px rgba(99,102,241,.15)}
+button{
+width:100%;height:50px;border:none;border-radius:12px;
+background:linear-gradient(135deg,#6366f1,#4f46e5);
+color:#fff;font-size:16px;font-weight:600;cursor:pointer;transition:.3s}
+button:hover{transform:translateY(-2px);
+box-shadow:0 14px 24px rgba(99,102,241,.28)}
+.secure{text-align:center;color:#64748b;font-size:13px;margin-top:18px}
+.success{text-align:center;color:#16a34a;font-weight:600;margin-top:15px}
+.toast{
+position:fixed;bottom:25px;left:50%;transform:translateX(-50%);
+background:#111827;color:#fff;padding:14px 22px;border-radius:8px;
+opacity:0;visibility:hidden;transition:.3s;z-index:9999}
+.toast.show{opacity:1;visibility:visible}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){
+.container{padding:28px 22px}
+h2{font-size:26px}
+.subtitle{font-size:14px}
+}
+</style>
 </head>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get Details</title>
-
-  <style>
-    /* body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #c6c4f3, #96f1d3, #4747b2);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    } */
-
-    body {
-      margin: 0;
-      height: 100vh;
-
-      background: url("./images/imge2.jpg") no-repeat center center/cover;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-
-    .container {
-      background: #fff;
-      padding: 30px;
-      border-radius: 16px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-      animation: fadeIn 0.6s ease;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #111827;
-    }
-
-    .input-group {
-      margin-bottom: 15px;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #e5e7eb;
-      font-size: 14px;
-      outline: none;
-      transition: 0.2s;
-    }
-
-    input:focus,
-    textarea:focus {
-      border-color: #6366f1;
-      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      background: #6366f1;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #4f46e5;
-    }
-
-    .success {
-      text-align: center;
-      color: green;
-      margin-top: 10px;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media(max-width: 480px) {
-      .container {
-        padding: 20px;
-      }
-    }
-  </style>
-
-</head>
-
 <body>
 
-  <div class="container">
-    <h2>Get Details</h2>
+<div class="container">
+<div class="logo-box">
+<img src="./assets/favicon.png" alt="LeadsZen">
+</div>
 
-    <div class="input-group">
-      <input id="name" placeholder="Your Name">
-    </div>
+<h2>Get in Touch</h2>
+<p class="subtitle">
+Share your requirement and our team will contact you shortly.
+</p>
 
-    <div class="input-group">
-      <input id="phone" placeholder="Phone Number">
-    </div>
+<div class="input-group">
+    <input
+        id="name"
+        type="text"
+        placeholder="Your Name *"
+        required
+        minlength="3"
+        maxlength="50"
+        pattern="[A-Za-z ]+"
+        title="Please enter a valid name">
+</div>
 
-    <div class="input-group">
-      <textarea id="message" placeholder="Your Requirement"></textarea>
-    </div>
+<div class="input-group">
+    <input
+        id="phone"
+        type="tel"
+        placeholder="Phone Number *"
+        required
+        maxlength="10"
+        pattern="[6-9]{1}[0-9]{9}"
+        title="Enter a valid 10-digit mobile number">
+</div>
 
-    <div class="input-group">
-      <input id="location" placeholder="Location">
-    </div>
+<div class="input-group">
+    <textarea
+        id="message"
+        placeholder="Describe your requirement *"
+        required
+        minlength="10"
+        maxlength="500"></textarea>
+</div>
 
-    <button onclick="submitLead()">Submit</button>
-
-    <p id="msg" class="success"></p>
-  </div>
-
-  <script>
-
-    function getClientId() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get("client_id");
-    }
-
-    function showToast(msg) {
-      const t = document.getElementById("toast");
-      t.innerText = msg;
-      t.className = "toast show";
-
-      setTimeout(() => {
-        t.className = "toast";
-      }, 3000);
-    }
-
-
-    async function submitLead() {
-      const clientId = getClientId();
-
-      if (!clientId) {
-        alert("Invalid link");
-        return;
-      }
-
-      const data = {
-        name: document.getElementById("name").value,
-        phone: document.getElementById("phone").value,
-        message: document.getElementById("message").value,
-        location: document.getElementById("location").value
-      };
-
-      await fetch(`https://leadszen-v1.onrender.com/api/lead/${clientId}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
-
-      // alert("Submitted successfully!");
-      showToast("Your request has been received. We'll contact you shortly.");
-      setTimeout(() => {
-        window.location.href = "index.html";
-      }, 7000);
-    }
+<div class="input-group">
+    <input
+        id="location"
+        type="text"
+        placeholder="Location *"
+        required
+        minlength="2"
+        maxlength="80">
+</div>
 
 
-  </script>
+<button onclick="submitLead()">Submit Request</button>
 
-  <div id="toast" class="toast"></div>
+<div class="secure">
+🔒 Securely powered by <b>LeadsZen</b>
+</div>
+
+<p id="msg" class="success"></p>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+function getClientId(){
+const params=new URLSearchParams(window.location.search);
+return params.get("client_id");
+}
+
+function showToast(msg){
+const t=document.getElementById("toast");
+t.innerText=msg;
+t.className="toast show";
+setTimeout(()=>{t.className="toast";},3000);
+}
+
+async function submitLead(){
+
+const clientId=getClientId();
+
+if(!clientId){
+showToast("Invalid request link.");
+return;
+}
+
+const data={
+name:document.getElementById("name").value,
+phone:document.getElementById("phone").value,
+message:document.getElementById("message").value,
+location:document.getElementById("location").value
+};
+
+try{
+
+const res=await fetch(`https://leadszen-v1.onrender.com/api/lead/${clientId}`,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify(data)
+});
+
+if(!res.ok){
+throw new Error("Submission failed");
+}
+
+showToast("✅ Thank you! Your request has been received.");
+
+setTimeout(()=>{
+window.location.href="index.html";
+},3000);
+
+}catch(err){
+showToast("Unable to submit your request. Please try again.");
+}
+
+}
+</script>
+
 </body>
-
 </html>
