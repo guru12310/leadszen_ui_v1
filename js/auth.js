@@ -74,6 +74,7 @@ async function login() {
   // }
 
   try {
+showLoader();
 
   const res = await fetch(`${API}/auth/login`, {
     method: "POST",
@@ -86,6 +87,8 @@ async function login() {
     })
   });
 
+
+hideLoader();
   const data = await res.json();
 
   if (data.success) {
@@ -157,3 +160,11 @@ async function login() {
 }
 
 
+function showLoader(message = "Please wait...") {
+    document.getElementById("loaderText").innerText = message;
+    document.getElementById("loader").style.display = "flex";
+}
+
+function hideLoader() {
+    document.getElementById("loader").style.display = "none";
+}

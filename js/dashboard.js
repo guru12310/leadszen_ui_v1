@@ -1,4 +1,6 @@
 const API = "https://leadszen-v1.onrender.com/api";
+// const API = "http://localhost:3000/api";
+
 const token = localStorage.getItem("token");
 
 async function loadSummary() {
@@ -129,7 +131,7 @@ function prevPage() {
 
 
 async function loadChart() {
-  const res = await fetch(`${API}/dashboard/analytics?from=2026-03-01&to=2026-04-14`, {
+  const res = await fetch(`${API}/dashboard/analytics`, {
     headers: { Authorization: "Bearer " + token }
   });
 
