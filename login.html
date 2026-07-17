@@ -1,307 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
-
 <title>LeadsZen Login</title>
-
 <link rel="icon" type="image/png" href="./assets/favicon.png">
-
 <style>
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
     font-family:Inter,Segoe UI,sans-serif;
 }
-
 body{
     min-height:100vh;
     background:#f8fafc;
 }
-
 /* =========================
    LAYOUT
 ========================= */
-
 .wrapper{
     min-height:100vh;
     display:grid;
     grid-template-columns:1fr 460px;
 }
-
 /* =========================
    LEFT PANEL
 ========================= */
 /* 
 .left-panel{
-
     position:relative;
-
     background:
     linear-gradient(
         rgba(15,23,42,.45),
         rgba(15,23,42,.45)
     ),
     url("./images/leadsbg.png");
-
     background-size:cover;
     background-position:center;
-
     overflow:hidden;
 } */
-
 .left-panel{
     background:url("./images/leadsbg.png");
     background-size:cover;
     background-position:center;
 }
-
 /* Logo */
-
 .brand{
-
     position:absolute;
     top:40px;
     left:50px;
-
     z-index:2;
-
     color:#fff;
-
     font-size:34px;
     font-weight:700;
 }
-
 /* Dots */
-
 .dots{
-
     position:absolute;
-
     left:60px;
     bottom:60px;
-
     width:260px;
     height:260px;
-
     z-index:2;
-
     background-image:
     radial-gradient(
         rgba(255,255,255,.45) 1px,
         transparent 1px
     );
-
     background-size:18px 18px;
-
     opacity:.5;
 }
-
 /* =========================
    LOGIN SECTION
 ========================= */
-
 .login-section{
-
     background:#fff;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     padding:40px;
-
     position:relative;
 }
-
 .login-section::before{
-
     content:"";
-
     position:absolute;
-
     width:320px;
     height:320px;
-
     border-radius:50%;
-
     background:
     radial-gradient(
       rgba(37,99,235,.08),
       transparent 70%
     );
-
     top:-120px;
     right:-120px;
 }
-
 .login-card{
-
     width:100%;
     max-width:380px;
-
     position:relative;
     z-index:2;
 }
-
 .logo-box{
-
     width:64px;
     height:64px;
-
     border-radius:18px;
-
     background:
     linear-gradient(
       135deg,
       #6366f1,
       #4f46e5
     );
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     color:#fff;
-
     font-size:24px;
     font-weight:700;
-
     margin-bottom:24px;
-
     box-shadow:
     0 10px 30px
     rgba(37,99,235,.25);
 }
-
 .logo-box img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
-
 .welcome{
-
     color:#64748b;
     font-size:15px;
-
     margin-bottom:8px;
 }
-
 .login-card h2{
-
     font-size:38px;
     color:#0f172a;
-
     margin-bottom:30px;
 }
-
 /* =========================
    FORM
 ========================= */
-
 .form-group{
     margin-bottom:18px;
 }
-
 label{
-
     display:block;
-
     margin-bottom:8px;
-
     color:#334155;
-
     font-size:14px;
     font-weight:600;
 }
-
 input{
-
     width:100%;
     height:54px;
-
     border:1px solid #dbe2ea;
-
     border-radius:12px;
-
     padding:0 15px;
-
     font-size:15px;
-
     transition:.3s;
 }
-
 input:focus{
-
     outline:none;
-
     border-color:#6366f1;
-
     box-shadow:
     0 0 0 4px
     rgba(37,99,235,.12);
 }
-
 button{
-
     width:100%;
     height:54px;
-
     border:none;
     border-radius:12px;
-
     background:#6366f1;
     color:#fff;
-
     font-size:15px;
     font-weight:600;
-
     cursor:pointer;
-
     transition:.3s;
 }
-
 button:hover{
     background:#3f38ff;
 }
-
 #error{
-
     margin-top:12px;
-
     text-align:center;
-
     color:#dc2626;
 }
-
 .link{
-
     text-align:center;
-
     margin-top:22px;
-
     color:#64748b;
-
     font-size:14px;
 }
-
 .link a{
-
     color:#2563eb;
-
     text-decoration:none;
-
     font-weight:600;
 }
-
-
 .loader-overlay{
     position:fixed;
     top:0;
@@ -315,11 +212,9 @@ button:hover{
     align-items:center;
     z-index:999999;
 }
-
 .loader-box{
     text-align:center;
 }
-
 .loader-spinner{
     width:55px;
     height:55px;
@@ -329,14 +224,12 @@ button:hover{
     animation:spin .8s linear infinite;
     margin:auto;
 }
-
 .loader-box p{
     margin-top:18px;
     color:#555;
     font-size:16px;
     font-weight:500;
 }
-
 @keyframes spin{
     from{
         transform:rotate(0deg);
@@ -345,89 +238,64 @@ button:hover{
         transform:rotate(360deg);
     }
 }
-
 /* =========================
    MOBILE
 ========================= */
-
 @media(max-width:900px){
-
     .wrapper{
         grid-template-columns:1fr;
     }
-
     .left-panel{
         display:none;
     }
-
     .login-section{
         padding:25px;
     }
-
     .login-card h2{
         font-size:32px;
     }
 }
-
 @media(max-width:480px){
-
     .login-section{
         padding:20px;
     }
-
     .logo-box{
         width:58px;
         height:58px;
     }
-
     .login-card h2{
         font-size:28px;
     }
 }
-
 </style>
-
 </head>
-
 <body>
-
     <div id="loader" class="loader-overlay">
         <div class="loader-box">
             <div class="loader-spinner"></div>
             <p id="loaderText">Please wait...</p>
         </div>
     </div>
-
 <div class="wrapper">
-
     <div class="left-panel">
-
         <!-- <div class="brand">
             LeadsZen
         </div> -->
-
         <div class="dots"></div>
-
     </div>
-
     <div class="login-section">
-
         <div class="login-card">
 <!-- 
             <div class="logo-box">
                 LZ
             </div> -->
-
             <div class="logo-box">
     <img src="assets/favicon.png" alt="LeadsZen Logo">
 </div>
-
             <div class="welcome">
                 Welcome to LeadsZen
             </div>
-
             <h2>Sign In</h2>
-
             <div class="form-group">
                 <label>Email Address</label>
                 <input
@@ -435,7 +303,6 @@ button:hover{
                     type="email"
                     placeholder="Enter your email">
             </div>
-
             <div class="form-group">
                 <label>Password</label>
                 <input
@@ -443,28 +310,20 @@ button:hover{
                     type="password"
                     placeholder="Enter your password">
             </div>
-
             <button onclick="login()">
                 Sign In
             </button>
-
             <p id="error"></p>
-
             <div class="link">
                 New user?
                 <a href="register.html">
                     Create Account
                 </a>
             </div>
-
         </div>
-
     </div>
-
 </div>
-
 <script src="js/auth.js"></script>
 <div id="toast" class="toast"></div>
-
 </body>
 </html>

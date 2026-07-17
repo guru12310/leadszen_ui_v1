@@ -1,24 +1,15 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>LeadsDashboard</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="stylesheet" href="css/style.css">
-
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.png">
-
   <link rel="shortcut icon" href="./assets/favicon.png">
 </head>
-
 <body>
 <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-
 <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
-
-
   <div class="sidebar">
     <h3>LeadsZen</h3>
     <a href="#">Dashboard</a>
@@ -26,40 +17,28 @@
     <a href="profile.html">Profile</a>
     <a href="deals.html">Deals</a>
   </div>
-
-
   <div class="main">
-
     <div class="topbar">
-
       <div>
         <h2 id="welcome">Welcome</h2>
         <p class="sub">Here’s your business overview</p>
       </div>
-
       <div class="profile" onclick="toggleMenu(event)">
         <span id="username">User</span>
         <div class="avatar" id="avatar">U</div>
-
         <!-- Dropdown -->
         <div class="dropdown" id="dropdown">
           <div class="user-info">
             <strong id="drop-name">User</strong><br>
             <small id="drop-email">email</small>
           </div>
-
           <hr>
-
           <div class="menu-item" onclick="goProfile()">Edit Profile</div>
           <div class="menu-item logout" onclick="logout()">Logout</div>
         </div>
       </div>
-
     </div>
-
-
     <h2>Dashboard</h2>
-
     <!-- Cards -->
     <div class="cards">
       <div class="card blue" id="total"></div>
@@ -67,12 +46,8 @@
       <div class="card orange" id="progress"></div>
       <div class="card red" id="lost"></div>
     </div>
-
-
-
     <div class="table-box">
       <h3>Recent Leads</h3>
-
       <table>
         <thead>
           <tr>
@@ -83,7 +58,6 @@
         </thead>
         <tbody id="leads"></tbody>
       </table>
-
       <!-- ✅ ADD PAGINATION HERE -->
       <div id="pagination" style="margin-top: 10px; text-align: center;">
         <button onclick="prevPage()">Prev</button>
@@ -96,38 +70,22 @@
       <h3>Lead Analytics</h3>
       <canvas id="chart"></canvas>
     </div>
-
-
-
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/dashboard.js"></script>
-
-
-
   <script>
-
 function toggleSidebar() {
-
   document.querySelector(".sidebar")
     .classList.toggle("active");
-
   document.getElementById("overlay")
     .classList.toggle("show");
 }
-
 function closeSidebar() {
-
   document.querySelector(".sidebar")
     .classList.remove("active");
-
   document.getElementById("overlay")
     .classList.remove("show");
 }
-
 </script>
-
 </body>
-
 </html>

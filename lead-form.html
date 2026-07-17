@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,17 +57,14 @@ h2{font-size:26px}
 </style>
 </head>
 <body>
-
 <div class="container">
 <div class="logo-box">
 <img src="./assets/favicon.png" alt="LeadsZen">
 </div>
-
 <h2>Get in Touch</h2>
 <p class="subtitle">
 Share your requirement and our team will contact you shortly.
 </p>
-
 <div class="input-group">
     <input
         id="name"
@@ -82,7 +76,6 @@ Share your requirement and our team will contact you shortly.
         pattern="[A-Za-z ]+"
         title="Please enter a valid name">
 </div>
-
 <div class="input-group">
     <input
         id="phone"
@@ -93,7 +86,6 @@ Share your requirement and our team will contact you shortly.
         pattern="[6-9]{1}[0-9]{9}"
         title="Enter a valid 10-digit mobile number">
 </div>
-
 <div class="input-group">
     <textarea
         id="message"
@@ -102,7 +94,6 @@ Share your requirement and our team will contact you shortly.
         minlength="10"
         maxlength="500"></textarea>
 </div>
-
 <div class="input-group">
     <input
         id="location"
@@ -112,73 +103,53 @@ Share your requirement and our team will contact you shortly.
         minlength="2"
         maxlength="80">
 </div>
-
-
 <button onclick="submitLead()">Submit Request</button>
-
 <div class="secure">
 🔒 Securely powered by <b>LeadsZen</b>
 </div>
-
 <p id="msg" class="success"></p>
-
 </div>
-
 <div id="toast" class="toast"></div>
-
 <script>
 function getClientId(){
 const params=new URLSearchParams(window.location.search);
 return params.get("client_id");
 }
-
 function showToast(msg){
 const t=document.getElementById("toast");
 t.innerText=msg;
 t.className="toast show";
 setTimeout(()=>{t.className="toast";},3000);
 }
-
 async function submitLead(){
-
 const clientId=getClientId();
-
 if(!clientId){
 showToast("Invalid request link.");
 return;
 }
-
 const data={
 name:document.getElementById("name").value,
 phone:document.getElementById("phone").value,
 message:document.getElementById("message").value,
 location:document.getElementById("location").value
 };
-
 try{
-
 const res=await fetch(`https://leadszen-v1.onrender.com/api/lead/${clientId}`,{
 method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify(data)
 });
-
 if(!res.ok){
 throw new Error("Submission failed");
 }
-
 showToast("✅ Thank you! Your request has been received.");
-
 setTimeout(()=>{
 window.location.href="index.html";
 },3000);
-
 }catch(err){
 showToast("Unable to submit your request. Please try again.");
 }
-
 }
 </script>
-
 </body>
 </html>

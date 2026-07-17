@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,337 +9,588 @@
     content="LeadsZen CRM helps businesses manage leads, track customers, automate follow-ups, and improve sales conversions with an easy-to-use lead management system." />
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.png">
   <link rel="shortcut icon" href="./assets/favicon.png">
-
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f6f8fc;
-      color: #1e293b;
-    }
-
-    /* HEADER */
-    header {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 50px;
-      background: white;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    }
-
-    header h2 {
-      color: #4f46e5;
-    }
-
-    .btn {
-      height: 42px;
-      /* 👈 fixed height */
-      padding: 0 20px;
-      /* remove vertical padding */
-      background: linear-gradient(135deg, #6366f1, #4f46e5);
-      color: white;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-
-      display: inline-flex;
-      /* 👈 center content */
-      align-items: center;
-      justify-content: center;
-
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-    }
-
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-    }
-
-    .hero p {
-      margin: 20px auto;
-      max-width: 600px;
-      color: #64748b;
-    }
-
-    /* FEATURES */
-    .features {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 50px;
-      flex-wrap: wrap;
-    }
-
-    .feature {
-      background: white;
-      padding: 25px;
-      width: 280px;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    /* PRICING */
-    .section {
-      padding: 70px 20px;
-      text-align: center;
-    }
-
-    .pricing-container {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      background: white;
-      padding: 30px;
-      width: 280px;
-      border-radius: 12px;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-    }
-
-    .card.highlight {
-      border: 2px solid #6366f1;
-      transform: scale(1.05);
-    }
-
-    .price {
-      font-size: 30px;
-      color: #4f46e5;
-      margin: 15px 0;
-    }
-
-    /* TESTIMONIAL */
-    .testimonial {
-      max-width: 700px;
-      margin: auto;
-      color: #475569;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #0f172a;
-      color: #94a3b8;
-      padding: 30px;
-      text-align: center;
-    }
-
-    /* LOGIN MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-box {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      width: 320px;
-      text-align: center;
-    }
-
-
-.subscription-alert {
-  display: none;
-
-  background: #6366f1;
-  color: #ffffff;
-
-  padding: 15px;
-  margin: 20px auto;
-  max-width: 800px;
-
-  border-radius: 8px;
-  border: 2px solid #ffffff;
-
-  text-align: center;
-  font-weight: 600;
-  line-height: 1.6;
-
-  animation: pulseAlert 2s infinite;
+    /* ===============================
+   LEADSZEN PREMIUM SAAS THEME
+===============================*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
-
-.subs {
-  color: #0dfe00;
-  font-weight: 700;
+html{
+    scroll-behavior:smooth;
 }
-
-@keyframes pulseAlert {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 rgba(99, 102, 241, 0.4);
-    border-color: #ffffff;
-  }
-
-  50% {
-    transform: scale(1.02);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.9);
-    border-color: #0dfe00;
-  }
-
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 rgba(99, 102, 241, 0.4);
-    border-color: #ffffff;
-  }
+body{
+    font-family:'Segoe UI',sans-serif;
+    color:#1e293b;
+    background:
+    radial-gradient(circle at top left,#818cf822,transparent 40%),
+    radial-gradient(circle at bottom right,#06b6d422,transparent 35%),
+    linear-gradient(180deg,#f8fbff,#eef2ff,#ffffff);
+    overflow-x:hidden;
 }
-
+.hero h1{
+    font-size:58px;
+    font-weight:800;
+}
+.changing-word{
+    color:#8b5cf6;
+    display:inline-block;
+    min-width:240px;
+    text-align:left;
+    position:relative;
+}
+/* Scrollbar */
+::-webkit-scrollbar{
+    width:10px;
+}
+::-webkit-scrollbar-thumb{
+    background:#6366f1;
+    border-radius:20px;
+}
+::-webkit-scrollbar-track{
+    background:#edf2ff;
+}
+/* Header */
+header{
+    position:sticky;
+    top:0;
+    z-index:999;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+    backdrop-filter:blur(20px);
+    background:rgba(255,255,255,.75);
+    border-bottom:1px solid rgba(255,255,255,.5);
+    box-shadow:0 10px 30px rgba(15,23,42,.05);
+}
+header h2{
+    font-size:30px;
+    background:linear-gradient(90deg,#4f46e5,#8b5cf6);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-weight:800;
+}
+/* Button */
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:46px;
+    padding:0 28px;
+    border:none;
+    border-radius:14px;
+    color:#fff;
+    text-decoration:none;
+    cursor:pointer;
+    background:linear-gradient(135deg,#6366f1,#7c3aed);
+    box-shadow:
+    0 10px 25px rgba(255, 255, 255, 0.35);
+    transition:.35s;
+}
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow:
+    0 20px 40px rgba(99,102,241,.45);
+}
+.changing-word span{
+    transition:0.3s ease;
+    display:inline-block;
+}
+/* HERO */
+.hero{
+    position:relative;
+    padding:130px 20px;
+    text-align:center;
+    overflow:hidden;
+    background:
+    linear-gradient(135deg,#0f172a,#1e1b4b,#312e81);
+    color:white;
+}
+/* Glow */
+.hero::before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:#7c3aed55;
+    filter:blur(120px);
+    left:-120px;
+    top:-120px;
+}
+.hero::after{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background:#06b6d444;
+    filter:blur(120px);
+    right:-120px;
+    bottom:-120px;
+}
+.hero>*{
+    position:relative;
+    z-index:2;
+}
+.hero h1{
+    font-size:60px;
+    font-weight:800;
+    margin-bottom:25px;
+}
+.hero p{
+    max-width:760px;
+    margin:auto;
+    font-size:18px;
+    line-height:1.8;
+    color:#dbe4ff;
+}
+/* ALERT */
+.subscription-alert{
+    display:none;
+    margin:50px auto;
+    max-width:900px;
+    padding:22px;
+    border-radius:18px;
+    color:white;
+    background:linear-gradient(135deg,#6366f1,#7c3aed);
+    box-shadow:0 25px 60px rgba(99,102,241,.35);
+    border:1px solid rgba(255,255,255,.25);
+    animation:pulse 2s infinite;
+}
+.subs{
+    color:#7CFF9B;
+}
+@keyframes pulse{
+50%{
+transform:scale(1.02);
+}
+}
+/* Sections */
+.section{
+    padding:90px 8%;
+    text-align:center;
+}
+.section:nth-child(even){
+    background:#f8fbff;
+}
+.section h2{
+    font-size:40px;
+    margin-bottom:25px;
+}
+.section p{
+    color:#64748b;
+    line-height:1.8;
+}
+/* FEATURES */
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    padding:90px 8%;
+    background:white;
+}
+.feature{
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(18px);
+    padding:35px;
+    border-radius:22px;
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:
+    0 15px 45px rgba(15,23,42,.08);
+    transition:.35s;
+}
+.feature:hover{
+    transform:translateY(-10px);
+    box-shadow:
+    0 25px 60px rgba(99,102,241,.18);
+}
+.feature h3{
+    color:#4338ca;
+    margin-bottom:18px;
+}
+.feature p{
+    color:#64748b;
+    line-height:1.7;
+}
+/* Pricing */
+.badge{
+    display:inline-block;
+    margin-bottom:15px;
+    padding:8px 14px;
+    border-radius:30px;
+    background:#fef3c7;
+    color:#92400e;
+    font-size:13px;
+    font-weight:700;
+}
+.coming-btn{
+    width:100%;
+    height:46px;
+    border:none;
+    border-radius:12px;
+    background:#cbd5e1;
+    color:#475569;
+    font-weight:700;
+    cursor:not-allowed;
+    opacity:.85;
+}
+.pricing-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+    gap:35px;
+    margin-top:45px;
+}
+.card{
+    background:white;
+    padding:40px;
+    border-radius:24px;
+    transition:.4s;
+    box-shadow:0 20px 60px rgba(15,23,42,.08);
+}
+.card:hover{
+    transform:translateY(-12px);
+}
+.card.highlight{
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    transform:scale(1.05);
+}
+.card.highlight p,
+.card.highlight span{
+    color:white;
+}
+.price{
+    font-size:46px;
+    color:#4f46e5;
+    font-weight:700;
+    margin:20px 0;
+}
+/* Testimonial */
+.testimonial{
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    border-radius:20px;
+    background:white;
+    box-shadow:0 15px 40px rgba(15,23,42,.08);
+    font-size:20px;
+    line-height:1.8;
+}
+/* Footer */
+footer{
+    background:linear-gradient(135deg,#0f172a,#111827);
+    color:#cbd5e1;
+    text-align:center;
+    padding:60px 20px;
+}
+footer a{
+    color:#8ea2ff;
+    text-decoration:none;
+}
+footer a:hover{
+    color:white;
+}
+/* Responsive */
+@media(max-width:768px){
+header{
+padding:15px 20px;
+}
+header h2{
+font-size:24px;
+}
+.hero{
+padding:90px 20px;
+}
+.hero h1{
+font-size:38px;
+}
+.hero p{
+font-size:16px;
+}
+.section h2{
+font-size:30px;
+}
+.features,
+.pricing-container{
+grid-template-columns:1fr;
+}
+.card.highlight{
+transform:none;
+}
+}
   </style>
 </head>
-
 <body>
-
   <header>
-    <h2>Leadszen</h2>
+    <h2>LeadsZen</h2>
     <a href="/login.html" class="btn">Login</a>
   </header>
-
+  <!-- Hero -->
   <section class="hero">
-    <h1>Turn Every Lead Into Revenue</h1>
+    <!-- <h1>Turn Every Lead Into Revenue</h1> -->
+    <h1>
+  Turn Every Lead Into
+  <span class="changing-word">
+    <span>Revenue</span>
+  </span>
+</h1>
     <p>
-      Leadszen helps businesses capture leads, automate follow-ups, and convert prospects into loyal customers
-      effortlessly.
+      LeadsZen is a modern Lead Management and CRM platform that helps businesses capture,
+      organize, track, and convert every customer inquiry into real business opportunities.
+      Whether your leads come from Facebook Ads, Instagram Ads, websites, referrals, or
+      direct enquiries, LeadsZen keeps everything in one place so your team never misses a
+      potential customer.
     </p>
     <a href="/login.html" class="btn">Get Started</a>
   </section>
-
-  
   <div id="subscriptionAlert" class="subscription-alert">
-🚀 Your account is ready.<br>
-Choose a <b class="subs">subscription</b> plan below 👇 to unlock all LeadsZen features and automation tools.
-</div>
-
+    🚀 Your account is ready.<br>
+    Choose a <b class="subs">subscription</b> plan below 👇 to unlock all LeadsZen features and automation tools.
+  </div>
+  <!-- Features -->
   <section class="features">
     <div class="feature">
-      <h3>Lead Capture</h3>
-      <p>Capture leads from ads, forms, and landing pages automatically.</p>
+      <h3>📥 Smart Lead Capture</h3>
+      <p>
+        Automatically collect leads from Meta Ads, websites, landing pages, QR codes,
+        and enquiry forms into one centralized CRM without manual data entry.
+      </p>
     </div>
     <div class="feature">
-      <h3>Automation</h3>
-      <p>Send instant follow-ups via email, SMS, or WhatsApp.</p>
+      <h3>🤖 Follow-up Automation</h3>
+      <p>
+        Respond to customers faster using automated follow-ups through WhatsApp,
+        Email, and SMS. Build stronger customer relationships and increase conversions.
+      </p>
     </div>
     <div class="feature">
-      <h3>CRM System</h3>
-      <p>Manage all your leads and customers in one place.</p>
+      <h3>📊 CRM & Pipeline</h3>
+      <p>
+        Organize leads, manage customer information, monitor sales progress,
+        create deals, schedule follow-ups, and close more business efficiently.
+      </p>
     </div>
   </section>
-
-
+  <!-- Why Choose -->
   <section class="section">
-    <h2>Pricing Plans</h2>
-    <div class="pricing-container">
-
-      <div class="card">
-        <h3>Basic</h3>
-        <p class="price">₹199<span>/month</span></p>
-        <p>Lead Capture + CRM</p>
-        <button class="btn" onclick="buyPlan('basic')">Subscribe Now</button>
-      </div>
-
-      <div class="card highlight">
-        <h3>Automation</h3>
-        <p class="price">₹499<span>/month</span></p>
-        <p>CRM + Automation + Follow-ups</p>
-        <button class="btn" onclick="buyPlan('automation')">Subscribe Now</button>
-      </div>
-
-      <div class="card">
-        <h3>Premium</h3>
-        <p class="price">₹999<span>/month</span></p>
-        <p>Advanced Analytics + Integrations</p>
-        <button class="btn" onclick="buyPlan('premium')">Subscribe Now</button>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>What Our Users Say</h2>
-    <p class="testimonial">
-      "Leadszen completely changed how we handle leads. Our conversion rate increased by 3x!"
+    <h2>Why Businesses Choose LeadsZen</h2>
+    <p>
+      Businesses lose customers every day because enquiries are forgotten, follow-ups
+      are delayed, and customer information is scattered across different platforms.
+      LeadsZen brings everything together into one simple dashboard, allowing you
+      to respond faster, manage leads professionally, and improve your sales process.
+    </p>
+    <br>
+    <p>
+      Whether you're a freelancer, marketing agency, real estate consultant,
+      insurance advisor, educational institution, healthcare provider, or a growing
+      business, LeadsZen helps you save time, improve customer engagement,
+      and increase conversions.
     </p>
   </section>
-
-  <section class="section">
-    <h2>FAQ</h2>
-    <p>Q: Is there a free trial?<br>A: Yes, 3-day free trial available.</p>
-    <p>Q: Can I cancel anytime?<br>A: Yes, no long-term commitments.</p>
-  </section>
-
-  <footer>
-    <p>© 2026 Leadszen</p>
-    <p>Email: guruleadszen@gmail.com</p>
-    <a href="/privacy-policy.html">Privacy</a> |
-    <a href="/terms.html">Terms</a> |
-    <a href="/refund-policy.html">Refund</a>
-  </footer>
-
-  <!-- LOGIN -->
-  <div class="modal" id="loginModal">
-    <div class="modal-box">
-      <h3>Login</h3>
-      <input id="email" placeholder="Email"><br><br>
-      <input id="password" type="password" placeholder="Password"><br><br>
-      <button class="btn" onclick="login()">Login</button>
+  <!-- Benefits -->
+  <section class="features">
+    <div class="feature">
+      <h3>⚡ Faster Response Time</h3>
+      <p>
+        Respond to enquiries instantly before your competitors do.
+        Fast responses significantly improve conversion rates.
+      </p>
     </div>
+    <div class="feature">
+      <h3>📈 Higher Sales</h3>
+      <p>
+        Never miss an opportunity again. Track every customer interaction
+        until the deal is successfully closed.
+      </p>
+    </div>
+    <div class="feature">
+      <h3>💼 Business Growth</h3>
+      <p>
+        Manage your complete customer journey from lead generation
+        to successful sales using one powerful platform.
+      </p>
+    </div>
+  </section>
+  <!-- Future -->
+  <section class="section">
+    <h2>Powerful Features Coming Soon</h2>
+    <p>
+      LeadsZen is continuously evolving with new business automation features.
+      Upcoming releases will help businesses automate even more of their daily work.
+    </p>
+    <br>
+    <p>
+      ✔ Meta Lead Ads Integration<br>
+      ✔ WhatsApp Business Automation<br>
+      ✔ Deal Management CRM<br>
+      ✔ Sales Pipeline Tracking<br>
+      ✔ Customer Activity Timeline<br>
+      ✔ Business Reports & Analytics<br>
+      ✔ Team Member Management<br>
+      ✔ Lead Assignment<br>
+      ✔ Custom Dashboards<br>
+      ✔ API Integrations
+    </p>
+  </section>
+  <!-- Pricing -->
+  <section class="section">
+    <h2>Simple & Affordable Pricing</h2>
+    <p>
+      Choose the plan that fits your business.
+      Start small and upgrade anytime as your business grows.
+      No hidden charges. No long-term commitments.
+    </p>
+    <br>
+    <div class="pricing-container"> 
+  <!-- BASIC -->
+  <div class="card highlight">
+<div class="badge">🔥 Available Now</div>
+    <h3>Starter 📈</h3>
+    <p class="price">₹199<span>/month</span></p>
+    <p>
+      ✔ Lead Capture<br>
+      ✔ Customer CRM<br>
+      ✔ Lead Management<br>
+      ✔ Contact Management<br>
+      ✔ Deal Tracking<br>
+      ✔ Dashboard Analytics
+    </p>
+    <button class="btn" onclick="buyPlan('basic')">
+      Subscribe Now
+    </button>
   </div>
-
+  <!-- AUTOMATION -->
+  <div class="card">
+    <div class="badge">🚀 Upcoming Release</div>
+    <h3>Automation</h3>
+    <p class="price">₹499<span>/month</span></p>
+    <p>
+      ✔ Everything in Basic<br>
+      ✔ WhatsApp Automation<br>
+      ✔ Email Automation<br>
+      ✔ SMS Follow-ups<br>
+      ✔ Lead Assignment<br>
+      ✔ Workflow Automation
+    </p>
+    <button class="coming-btn" disabled>
+      Coming Soon
+    </button>
+  </div>
+  <!-- PREMIUM -->
+  <div class="card">
+    <div class="badge">⭐ Upcoming Release</div>
+    <h3>Premium</h3>
+    <p class="price">₹999<span>/month</span></p>
+    <p>
+      ✔ Everything in Automation<br>
+      ✔ Meta Lead Ads Integration<br>
+      ✔ Team Management<br>
+      ✔ API Access<br>
+      ✔ Advanced Analytics<br>
+      ✔ Custom Integrations
+    </p>
+    <button class="coming-btn" disabled>
+      Coming Soon
+    </button>
+  </div>
+</div>
+  </section>
+  <!-- Testimonials -->
+  <section class="section">
+    <h2>Why Customers Love LeadsZen</h2>
+    <p class="testimonial">
+      "LeadsZen simplified our lead management process.
+      We now respond faster, track every enquiry,
+      and never miss valuable business opportunities."
+    </p>
+  </section>
+  <!-- FAQ -->
+  <section class="section">
+    <h2>Frequently Asked Questions</h2>
+    <p>
+      <strong>Do I need technical knowledge?</strong><br>
+      No. LeadsZen is designed to be simple and easy for every business owner.
+    </p>
+    <br>
+    <p>
+      <strong>Can I upgrade my subscription later?</strong><br>
+      Yes. Upgrade or change your plan anytime based on your business requirements.
+    </p>
+    <br>
+    <p>
+      <strong>Is my business data secure?</strong><br>
+      Yes. We prioritize the security and privacy of your customer information.
+    </p>
+    <br>
+    <p>
+      <strong>Who should use LeadsZen?</strong><br>
+      Marketing agencies, real estate consultants, insurance advisors,
+      educational institutions, freelancers, startups,
+      and every business that manages customer enquiries.
+    </p>
+  </section>
+  <!-- CTA -->
+  <section class="section">
+    <h2>Start Growing Your Business Today</h2>
+    <p>
+      Join LeadsZen and experience a smarter way to capture leads,
+      manage customers, automate follow-ups,
+      and grow your business with confidence.
+    </p>
+    <br>
+    <a href="/register.html" class="btn">
+      Create Your Account
+    </a>
+  </section>
+  <footer>
+    <p><strong>LeadsZen</strong></p>
+    <p>
+      Smart Lead Management • CRM • Automation Platform
+    </p>
+    <br>
+    <p>Email : support@leadszen.in</p>
+    <br>
+    <a href="/privacy-policy.html">Privacy Policy</a> |
+    <a href="/terms.html">Terms & Conditions</a> |
+    <a href="/refund-policy.html">Refund Policy</a>
+    <br><br>
+    <p>© 2026 LeadsZen. All Rights Reserved.</p>
+  </footer>
+<!-- 
+</body> -->
   <script>
     function openLogin() {
       document.getElementById("loginModal").style.display = "flex";
     }
-
     function login() {
       alert("Connect backend login here");
     }
-
     function buyPlan(plan) {
       alert("Selected: " + plan + " (Next Razorpay)");
     }
-
-
   </script>
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
-
   <script>
-
     async function buyPlan(plan) {
-
       const token = localStorage.getItem("token");
-
       const API = "https://leadszen-v1.onrender.com/api";
       // const API = "http://localhost:3000/api";
 if (!token) {
-
   // showToast(
   //   "🚀 Create an account and subscribe to a plan to get started with LeadsZen."
   // );
-
   alert("🚀 Create an account and subscribe to a plan to get started with LeadsZen.");
-
   setTimeout(() => {
     window.location.href = "login.html";
   }, 3000);
-
   return;
 }
-
       try {
-
         const response = await fetch(
           `${API}/payment/create-order`,
           {
@@ -354,132 +604,99 @@ if (!token) {
             })
           }
         );
-
         const data = await response.json();
-
         if (!data.success) {
-
           alert(data.message);
-
           return;
         }
-
         const order = data.order;
-
         const options = {
-
           key: data.key,
-
           amount: order.amount,
-
           currency: order.currency,
-
           name: "LeadsZen",
-
           description: plan + " Plan",
-
           order_id: order.id,
-
           handler: async function (response) {
-
             await verifyPayment(response);
-
           },
-
           theme: {
             color: "#6366f1"
           }
-
         };
         console.log("------options--------", options);
-
         const rzp = new Razorpay(options);
-
         rzp.on('payment.failed', function (response) {
           console.log("PAYMENT FAILED");
-
           console.log('---------resp------', response);
-
           console.log('------err--------', response.error);
-
         });
-
         rzp.open();
-
       } catch (err) {
-
         console.error('-----err-----', err);
-
         alert("Payment initialization failed");
-
       }
-
     }
-
   </script>
-
-
   <script>
-
     const API = "https://leadszen-v1.onrender.com/api";
     // const API = "http://localhost:3000/api";
-
     async function verifyPayment(paymentData) {
-
       const token = localStorage.getItem("token");
-
       const response = await fetch(`
     ${API}/payment/verify`,
         {
           method: "POST",
-
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
           },
-
           body: JSON.stringify(paymentData)
         }
       );
-
       const data = await response.json();
-
       if (data.success) {
-
         alert("Payment Successful");
-
         window.location.href = "dashboard.html";
-
       } else {
-
         alert("Payment Verification Failed");
-
       }
-
     }
-
     const params =new URLSearchParams( window.location.search);
-
 if(params.get("subscription")=== "required"){
    document
    .getElementById("subscriptionAlert")
    .style.display = "block";
 }
-
     function showToast(msg) {
       const t = document.getElementById("toast");
       t.innerText = msg;
       t.className = "toast show";
-
       setTimeout(() => {
         t.className = "toast";
       }, 3000);
     }
-
-
+const words = [
+  "Revenue",
+  "Relationships",
+  "Customers",
+  "Sales",
+  "Growth",
+  "Success"
+];
+let index = 0;
+const word = document.querySelector(".changing-word span");
+setInterval(() => {
+    word.style.opacity = "0";
+    word.style.transform = "translateY(15px)";
+    setTimeout(() => {
+        index = (index + 1) % words.length;
+        word.innerText = words[index];
+        word.style.opacity = "1";
+        word.style.transform = "translateY(0)";
+    },250);
+},2000);
   </script>
 <div id="toast" class="toast"></div>
-
 </body>
-
 </html>

@@ -1,79 +1,58 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Leads</title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <!-- ADD THIS -->
 <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.png">
 <link rel="shortcut icon" href="./assets/favicon.png">
 </head>
-
 <head>
   <title>Leads</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
 <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-
 <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
-
-
   <div class="sidebar">
     <h3>LeadsZen</h3>
     <a href="dashboard.html">Dashboard</a>
     <a href="leads.html">Leads</a>
     <a href="profile.html">Profile</a>
     <a href="deals.html">Deals</a>
-
   </div>
-
-
   <div class="main">
-
     <div class="topbar">
-
       <div>
         <h2 id="welcome">Welcome</h2>
         <p class="sub">Here’s your business overview</p>
       </div>
-
       <div class="profile" onclick="toggleMenu(event)">
         <span id="username">User</span>
         <div class="avatar" id="avatar">U</div>
-
         <!-- Dropdown -->
         <div class="dropdown" id="dropdown">
           <div class="user-info">
             <strong id="drop-name">User</strong><br>
             <small id="drop-email">email</small>
           </div>
-
           <hr>
-
           <div class="menu-item" onclick="goProfile()">Edit Profile</div>
           <div class="menu-item logout" onclick="logout()">Logout</div>
         </div>
       </div>
-
     </div>
     <!-- Top -->
     <div class="topbar">
       <h2>Leads Management</h2>
       <button onclick="openModal()">+ Add Lead</button>
     </div>
-
     <!-- Filters -->
     <div class="filter-box">
-
       <div class="input-group">
         <input id="search" placeholder="🔍 Search name or phone">
       </div>
-
       <select id="status" class="select">
         <option value="">All Status</option>
         <option value="NEW">New</option>
@@ -81,14 +60,10 @@
         <option value="CONVERTED">Converted</option>
         <option value="LOST">Lost</option>
       </select>
-
       <input type="date" id="from" class="date">
       <input type="date" id="to" class="date">
-
       <button id="applyBtn" class="apply-btn">Apply Filters</button>
-
     </div>
-
     <!-- Table -->
     <div class="table-box">
       <table>
@@ -104,86 +79,64 @@
         <tbody id="leads"></tbody>
       </table>
     </div>
-
     <div class="pagination">
       <button onclick="prevPage()" id="prevBtn">Prev</button>
       <button onclick="nextPage()" id="nextBtn">Next</button>
-
     </div>
   </div>
-
   <!-- Manual Lead Modal -->
-
   <div id="leadModal" class="modal">
     <div class="modal-content">
       <h3>Add Manual Lead</h3>
-
       <input id="m_name" placeholder="Name">
       <input id="m_phone" placeholder="Phone">
       <input id="m_location" placeholder="Location">
-
       <!-- ✅ Error message -->
       <p id="leadError" style="color:red; font-size:14px;"></p>
-
       <button onclick="saveLead()">Save</button>
       <button onclick="closeModal()" class="cancel">Cancel</button>
     </div>
   </div>
-
   <script>
     async function loadUser() {
       const res = await apiCall('/client/me'); // already gives data
-
       if (!res || !res.success) return;
-
       const d = res.data;
-
       // ✅ Set all UI data
       document.getElementById("welcome").innerText = `Welcome, ${d.name}`;
       document.getElementById("username").innerText = d.name;
       document.getElementById("drop-name").innerText = d.name;
       document.getElementById("drop-email").innerText = d.email;
-
       // ✅ Avatar (IMPORTANT FIX)
       const avatar = document.getElementById("avatar");
-
       if (avatar) {
         avatar.innerText = d.name ? d.name[0].toUpperCase() : "U";
       }
     }
-
     function toggleMenu(event) {
       event.stopPropagation(); // 🔥 prevents immediate close
-
       const menu = document.getElementById("dropdown");
       menu.style.display = menu.style.display === "block" ? "none" : "block";
       menu.classList.toggle("show");
     }
-
     function goProfile() {
       window.location.href = "profile.html";
     }
-
     function logout() {
       localStorage.removeItem("token");
       window.location.href = "index.html";
     }
-
     // close dropdown when clicking outside
 document.addEventListener("click", function (event) {
   const profile = document.querySelector(".profile");
   const dropdown = document.getElementById("dropdown");
-
   if (!profile.contains(event.target)) {
     dropdown.style.display = "none";
   }
 });
-
   </script>
-
   <script src="./js/api.js"></script>
   <script src="./js/leads.js"></script>
-
   <script>
     loadUser()
     toggleMenu()
@@ -192,27 +145,18 @@ document.addEventListener("click", function (event) {
   </script>
   <!-- <script src="./js/dashboard.js"></script> -->
   <script>
-
 function toggleSidebar() {
-
   document.querySelector(".sidebar")
     .classList.toggle("active");
-
   document.getElementById("overlay")
     .classList.toggle("show");
 }
-
 function closeSidebar() {
-
   document.querySelector(".sidebar")
     .classList.remove("active");
-
   document.getElementById("overlay")
     .classList.remove("show");
 }
-
 </script>
-
 </body>
-
 </html>

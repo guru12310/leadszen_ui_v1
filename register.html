@@ -1,242 +1,149 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Register</title>
   <link rel="stylesheet" href="css/style.css">
-
   <!-- ADD THIS -->
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.png">
 <link rel="shortcut icon" href="./assets/favicon.png">
 </head>
-
 <head>
   <title>Register</title>
 <style>
-
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
     margin: 0;
     min-height: 100vh;
     min-height: 100dvh;
-
     background: url("./images/leadsbg.png") no-repeat center center/cover;
-
     display: flex;
     justify-content: flex-end;   /* Right side */
     align-items: center;
-
     padding: 0 80px;
-
     font-family: 'Segoe UI', sans-serif;
 }
-
 .container{
-
     background:rgba(255,255,255,.96);
-
     padding:40px;
-
     border-radius:20px;
-
     width:100%;
     max-width:420px;
-
     box-shadow:
     0 20px 45px rgba(0,0,0,.18);
-
     backdrop-filter:blur(8px);
 }
-
 h2{
-
     text-align:center;
-
     color:#111827;
-
     margin-bottom:8px;
-
     font-size:30px;
-
     font-weight:700;
 }
-
 input{
-
     width:100%;
-
     height:48px;
-
     padding:0 15px;
-
     margin:10px 0;
-
     border-radius:10px;
-
     border:1px solid #d9d9d9;
-
     font-size:15px;
-
     transition:.3s;
 }
-
 input:focus {
-
   outline: none;
-
   border-color: #6366f1;
-
   box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
 }
-
 button{
-
     width:100%;
-
     height:48px;
-
     margin-top:18px;
-
     border:none;
-
     border-radius:10px;
-
     background:linear-gradient(135deg,#6366f1,#4f46e5);
-
     color:white;
-
     font-size:16px;
-
     font-weight:600;
-
     cursor:pointer;
-
     transition:.3s;
 }
-
 button:hover{
-
     transform:translateY(-2px);
-
     box-shadow:0 12px 24px rgba(99,102,241,.35);
 }
-
 button:hover {
-
   transform: translateY(-2px);
-
   box-shadow: 0 10px 20px rgba(79,70,229,0.25);
 }
-
 .link{
-
     text-align:center;
-
     margin-top:22px;
-
     color:#64748b;
-
     font-size:14px;
 }
-
 .link a{
-
     color:#6366f1;
-
     font-weight:600;
-
     text-decoration:none;
 }
-
 .link a:hover{
-
     text-decoration:underline;
 }
-
 #error {
-
   color: red;
-
   font-size: 13px;
-
   margin-top: 10px;
-
   text-align: center;
 }
-
-
 .logo-box{
-
     width:70px;
     height:70px;
-
     margin:0 auto 18px;
-
             background:
     linear-gradient(
       135deg,
       #6366f1,
       #4f46e5
     );
-
     border-radius:18px;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     box-shadow:0 10px 25px rgba(99,102,241,.18);
 }
-
 .logo-box img{
-
     width:50px;
     height:50px;
 }
-
 .subtitle{
-
     text-align:center;
-
     color:#64748b;
-
     margin-bottom:25px;
-
     line-height:1.5;
-
     font-size:14px;
 }
-
-
 .left-panel{
     position: relative;
-
     background: linear-gradient(
         rgba(15,23,42,0.75),
         rgba(99,102,241,0.65)
     ),
     url("./images/leadsbg.png");
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-
     padding: 60px;
-
     color: #fff;
 }
-
 .otp-modal{
     display:none;
     position:fixed;
@@ -246,7 +153,6 @@ button:hover {
     align-items:center;
     z-index:9999;
 }
-
 .otp-card{
     width:420px;
     background:#fff;
@@ -254,462 +160,230 @@ button:hover {
     padding:30px;
     text-align:center;
 }
-
 .otp-card input{
     width:100%;
     padding:12px;
     margin:20px 0;
     font-size:18px;
 }
-
 .otp-card button{
     width:100%;
     padding:12px;
     cursor:pointer;
 }
-
 #otpError{
     color:red;
     margin-bottom:15px;
 }
-
-
 /* MOBILE RESPONSIVE */
-
 /* ============================= */
 /* Mobile Responsive */
 /* ============================= */
-
 @media screen and (max-width:768px){
-
 body{
-
     padding:16px;
-
     align-items:center;
-
     overflow-y:auto;
 }
-
 .container{
-
     width:100%;
-
     max-width:100%;
-
     padding:28px 22px;
-
     border-radius:18px;
-
     margin:20px auto;
 }
-
 .logo-box{
-
     width:60px;
     height:60px;
-
     margin-bottom:16px;
 }
-
 .logo-box img{
-
     width:42px;
     height:42px;
 }
-
 h2{
-
     font-size:26px;
-
     margin-bottom:8px;
 }
-
 .subtitle{
-
     font-size:14px;
-
     line-height:1.5;
-
     margin-bottom:20px;
 }
-
 .input-group{
-
     margin-bottom:14px;
 }
-
 input,
 textarea{
-
     width:100%;
-
     font-size:15px;
-
     padding:14px;
-
     border-radius:10px;
 }
-
 textarea{
-
     min-height:100px;
 }
-
 button{
-
     width:100%;
-
     height:48px;
-
     font-size:15px;
-
     margin-top:10px;
 }
-
 .secure{
-
     font-size:12px;
-
     margin-top:18px;
 }
-
 .success{
-
     font-size:13px;
 }
-
 }
-
-
 /* ============================= */
 /* Small Mobile */
 /* ============================= */
-
 @media screen and (max-width:380px){
-
 .container{
-
     padding:22px 16px;
 }
-
 h2{
-
     font-size:22px;
 }
-
 .subtitle{
-
     font-size:13px;
 }
-
 input,
 textarea{
-
     font-size:14px;
 }
-
 button{
-
     height:46px;
-
     font-size:14px;
 }
-
 .logo-box{
-
     width:54px;
     height:54px;
 }
-
 .logo-box img{
-
     width:38px;
     height:38px;
 }
-
 }
-
 </style>
 </head>
-
 <body>
-
 <div class="container">
-
     <div class="logo-box">
         <img src="./assets/favicon.png" alt="LeadsZen">
     </div>
-
     <h2>Create Your Account</h2>
-
     <p class="subtitle">
         Start managing your business leads with LeadsZen.
     </p>
-
     <input id="name" placeholder="Full Name">
-
     <input id="business" placeholder="Business Name">
-
     <input id="email" type="email" placeholder="Email Address">
-
     <input id="password" type="password" placeholder="Password">
-
     <input id="whatsapp" placeholder="WhatsApp Number">
-
     <button onclick="register()">
         Create Free Account
     </button>
-
     <p id="error"></p>
-
     <div class="link">
         Already have an account?
         <a href="login.html">Login</a>
     </div>
-
 </div>
-
 <div id="otpModal" class="otp-modal">
-
     <div class="otp-card">
-
         <h2>Email Verification</h2>
-
         <p>
             Enter the OTP sent to
             <br>
             <strong id="otpEmail"></strong>
         </p>
-
         <input
             id="otp"
             type="text"
             maxlength="6"
             placeholder="Enter 6 digit OTP">
-
         <div id="otpError"></div>
-
         <button id="verifyBtn" onclick="verifyOTP()">
             Verify OTP
         </button>
-
         <p id="timerText">
             Resend OTP in
             <span id="countdown">30</span>s
         </p>
-
         <button
             id="resendBtn"
             onclick="resendOTP()"
             style="display:none;">
             Resend OTP
         </button>
-
     </div>
-
 </div>
-
   <script src="js/api.js"></script>
-
   <script>
     function showToast(msg) {
       const t = document.getElementById("toast");
       t.innerText = msg;
       t.className = "toast show";
-
       setTimeout(() => {
         t.className = "toast";
       }, 3000);
     }
-
-    // async function register() {
-    //   const nameInput = document.getElementById("name");
-    //   const businessInput = document.getElementById("business");
-    //   const emailInput = document.getElementById("email");
-    //   const passwordInput = document.getElementById("password");
-    //   const whatsappInput = document.getElementById("whatsapp");
-    //   const error = document.getElementById("error");
-
-    //   const name = nameInput.value.trim();
-    //   const business_name = businessInput.value.trim();
-    //   const email = emailInput.value.trim();
-    //   const password = passwordInput.value.trim();
-    //   const whatsapp_number = whatsappInput.value.trim();
-
-    //   // Reset error
-    //   error.innerText = "";
-
-    //   // ✅ Validation
-    //   if (!name) {
-    //     error.innerText = "Name is required";
-    //     nameInput.focus();
-    //     return;
-    //   }
-
-    //   if (!business_name) {
-    //     error.innerText = "Business name is required";
-    //     businessInput.focus();
-    //     return;
-    //   }
-
-    //   if (!email) {
-    //     error.innerText = "Email is required";
-    //     emailInput.focus();
-    //     return;
-    //   }
-
-    //   if (!emailInput.checkValidity()) {
-    //     error.innerText = "Enter a valid email";
-    //     emailInput.focus();
-    //     return;
-    //   }
-
-    //   if (!password) {
-    //     error.innerText = "Password is required";
-    //     passwordInput.focus();
-    //     return;
-    //   }
-
-    //   if (password.length < 6) {
-    //     error.innerText = "Password must be at least 6 characters";
-    //     passwordInput.focus();
-    //     return;
-    //   }
-
-    //   if (!whatsapp_number) {
-    //     error.innerText = "WhatsApp number is required";
-    //     whatsappInput.focus();
-    //     return;
-    //   }
-
-    //   // simple phone check (10 digits)
-    //   if (!/^\d{10}$/.test(whatsapp_number)) {
-    //     error.innerText = "Enter a valid 10-digit WhatsApp number";
-    //     whatsappInput.focus();
-    //     return;
-    //   }
-
-    //   try {
-    //     // ✅ API call
-    //     const res = await apiCall('/auth/register', 'POST', {
-    //       name,
-    //       business_name,
-    //       email,
-    //       password,
-    //       whatsapp_number
-    //     });
-
-    //     if (res.success) {
-    //       showToast("Registered Successfully");
-
-    //       setTimeout(() => {
-    //         window.location.href = "index.html";
-    //       }, 2000);
-
-    //     } else {
-    //       error.innerText = res.message || "Registration failed";
-    //     }
-
-    //   } catch (err) {
-    //     error.innerText = "Something went wrong. Try again.";
-    //     console.error(err);
-    //   }
-    // }
 function openOTPModal() {
-
     document.getElementById("otpModal").style.display = "flex";
-
     document.getElementById("otpEmail").innerText = clientEmail;
-
     document.getElementById("otp").value = "";
-
     document.getElementById("otpError").innerText = "";
-
     startCountdown();
-
 }
-
-
 function startCountdown() {
-
     countdown = 30;
-
     clearInterval(timer);
-
     document.getElementById("countdown").innerText = countdown;
     document.getElementById("timerText").style.display = "block";
     document.getElementById("resendBtn").style.display = "none";
-
     timer = setInterval(() => {
-
         countdown--;
-
         document.getElementById("countdown").innerText = countdown;
-
         if (countdown <= 0) {
-
             clearInterval(timer);
-
             document.getElementById("timerText").style.display = "none";
             document.getElementById("resendBtn").style.display = "block";
-
         }
-
     }, 1000);
-
 }
-
 async function verifyOTP() {
-
     const otp = document.getElementById("otp").value.trim();
     const error = document.getElementById("otpError");
     const btn = document.getElementById("verifyBtn");
-
     error.innerText = "";
-
     if (otp.length != 6) {
-
         error.innerText = "Enter valid OTP";
         return;
-
     }
-
     btn.disabled = true;
     btn.innerText = "Verifying...";
-
     try {
         const res = await apiCall("/auth/verify-otp", "POST", {
             client_id: clientId,
             otp
         });
-
         if (res.success) {
-
             showToast("Email verified successfully");
-
             setTimeout(() => {
                 window.location.href = "login.html";
             }, 1500);
-
         } else {
-
             error.innerText = res.message;
-
         }
-
     } catch (err) {
-
         error.innerText = "Verification failed";
-
     }
-
     btn.disabled = false;
     btn.innerText = "Verify OTP";
-
 }
-
-
 async function resendOTP() {
     try {
         const res = await apiCall("/auth/resend-otp", "POST", {
@@ -725,80 +399,64 @@ async function resendOTP() {
         showToast("Unable to resend OTP");
     }
 }
-
-
     let clientId = null;
     let clientEmail = "";
     let countdown = 30;
     let timer = null;
-
 async function register() {
-
     const nameInput = document.getElementById("name");
     const businessInput = document.getElementById("business");
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
     const whatsappInput = document.getElementById("whatsapp");
     const error = document.getElementById("error");
-
     const name = nameInput.value.trim();
     const business_name = businessInput.value.trim();
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
     const whatsapp_number = whatsappInput.value.trim();
-
     error.innerText = "";
-
     if (!name) {
         error.innerText = "Name is required";
         nameInput.focus();
         return;
     }
-
     if (!business_name) {
         error.innerText = "Business name is required";
         businessInput.focus();
         return;
     }
-
     if (!email) {
         error.innerText = "Email is required";
         emailInput.focus();
         return;
     }
-
     if (!emailInput.checkValidity()) {
         error.innerText = "Enter a valid email";
         emailInput.focus();
         return;
     }
-
     if (!password) {
         error.innerText = "Password is required";
         passwordInput.focus();
         return;
     }
-
     if (password.length < 6) {
         error.innerText = "Password must be at least 6 characters";
         passwordInput.focus();
         return;
     }
-
     if (!whatsapp_number) {
         error.innerText = "WhatsApp number is required";
         whatsappInput.focus();
         return;
     }
-
     if (!/^\d{10}$/.test(whatsapp_number)) {
         error.innerText = "Enter a valid 10-digit WhatsApp number";
         whatsappInput.focus();
         return;
     }
-
     try {
-
         const res = await apiCall("/auth/register", "POST", {
             name,
             business_name,
@@ -806,33 +464,21 @@ async function register() {
             password,
             whatsapp_number
         });
-
         if (res.success) {
-
             clientId = res.data.client_id;
             clientEmail = res.data.email;
-
             showToast("OTP sent to your email");
-
             openOTPModal();
-
         } else {
-
             error.innerText = res.message || "Registration failed";
-
         }
-
     } catch (err) {
-
         console.error(err);
         error.innerText = "Something went wrong.";
-
     }
-
 }
   </script>
   <div id="toast" class="toast"></div>
-
 </body>
 <!-- </html> -->
 </html>
