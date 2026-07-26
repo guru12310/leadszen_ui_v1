@@ -320,9 +320,27 @@ button{
             Resend OTP
         </button>
     </div>
+<div id="loader" class="loader-overlay" style="display:none;">
+    <div class="loader-spinner"></div>
+</div>
+</div>
 </div>
   <script src="js/api.js"></script>
   <script>
+
+function showLoader() {
+    const loader = document.getElementById("loader");
+    if (loader) {
+        loader.style.display = "flex";
+    }
+}
+
+function hideLoader() {
+    const loader = document.getElementById("loader");
+    if (loader) {
+        loader.style.display = "none";
+    }
+}
     function showToast(msg) {
       const t = document.getElementById("toast");
       t.innerText = msg;
@@ -457,6 +475,8 @@ async function register() {
         return;
     }
     try {
+        console.log("=========above toast=========")
+        showLoader()
         const res = await apiCall("/auth/register", "POST", {
             name,
             business_name,
@@ -464,6 +484,7 @@ async function register() {
             password,
             whatsapp_number
         });
+        hideLoader()
         if (res.success) {
             clientId = res.data.client_id;
             clientEmail = res.data.email;
@@ -477,6 +498,8 @@ async function register() {
         error.innerText = "Something went wrong.";
     }
 }
+
+
   </script>
   <div id="toast" class="toast"></div>
 </body>

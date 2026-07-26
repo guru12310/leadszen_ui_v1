@@ -18,7 +18,7 @@
   <div class="sidebar">
     <h3>LeadsZen</h3>
     <a href="dashboard.html">Dashboard</a>
-    <a href="leads.html">Leads</a>
+    <a href="leads.html" class="active">Leads</a>
     <a href="profile.html">Profile</a>
     <a href="deals.html">Deals</a>
   </div>
@@ -73,6 +73,8 @@
             <th>Phone</th>
             <th>Status</th>
             <th>Source</th>
+            <th>Location</th>
+            <th>Description</th>
             <th>Date</th>
           </tr>
         </thead>
@@ -91,6 +93,7 @@
       <input id="m_name" placeholder="Name">
       <input id="m_phone" placeholder="Phone">
       <input id="m_location" placeholder="Location">
+      <input id="m_description" placeholder="Description">
       <!-- ✅ Error message -->
       <p id="leadError" style="color:red; font-size:14px;"></p>
       <button onclick="saveLead()">Save</button>

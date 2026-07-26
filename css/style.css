@@ -681,7 +681,11 @@ tr {
 
 }
 
-
+.sidebar a.active{
+    background:#6366f1;
+    color:#fff;
+    border-radius:8px;
+}
 
 /* ================= FULL MOBILE RESPONSIVE ================= */
 

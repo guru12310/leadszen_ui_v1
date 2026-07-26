@@ -232,6 +232,8 @@ textarea{
 </style>
 <body>
     <!-- Sidebar -->
+     <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
     <div class="sidebar">
         <div class="logo">
             <!-- <img src="./assets/favicon.png" alt=""> -->
@@ -239,9 +241,11 @@ textarea{
         </div>
         <a href="dashboard.html">Dashboard</a>
         <a href="leads.html">Leads</a>
-        <a href="deals.html" class="active">Deals</a>
         <a href="profile.html">Profile</a>
+        <a href="deals.html" class="active">Deals</a>
+
     </div>
+    
     <!-- Main -->
     <div class="main">
         <!-- Top Bar -->
@@ -250,12 +254,27 @@ textarea{
                 <h2>Create Deal</h2>
                 <p>Create a new sales opportunity</p>
             </div>
-            <div class="profile">
+            <!-- <div class="profile">
                 <span id="username">User</span>
                 <div class="avatar" id="avatar">
                     U
                 </div>
-            </div>
+            </div> -->
+                  <div class="profile" onclick="toggleMenu(event)">
+        <!-- <span id="username">User</span>
+        <div class="avatar" id="avatar">U</div> -->
+        <!-- Dropdown -->
+        <div class="dropdown" id="dropdown">
+          <div class="user-info">
+            <strong id="drop-name">User</strong><br>
+            <small id="drop-email">email</small>
+          </div>
+          <hr>
+          <div class="menu-item" onclick="goProfile()">Edit Profile</div>
+          <div class="menu-item logout" onclick="logout()">Logout</div>
+        </div>
+      </div>
+       
         </div>
         <!-- Form Card -->
         <div class="deal-card">
@@ -390,7 +409,8 @@ textarea{
     <!-- <script src="js/deal.js"></script> -->
     <script>
         const API = "https://leadszen-v1.onrender.com/api";
-document.addEventListener("DOMContentLoaded", () => {
+        // const API = "http://localhost:3000/api";
+    document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");
     if (!token) {
         showToast("Please login to continue.");
@@ -459,6 +479,7 @@ async function createDeal(){
     btn.disabled=true;
     btn.innerText="Saving...";
     const payload={
+
         customer_name:document.getElementById("customer_name").value.trim(),
         business_name:document.getElementById("business_name").value.trim(),
         phone:document.getElementById("phone").value.trim(),
@@ -516,4 +537,18 @@ function clearForm(){
 }
     </script>
 </body>
+<script>
+    function toggleSidebar() {
+  document.querySelector(".sidebar")
+    .classList.toggle("active");
+  document.getElementById("overlay")
+    .classList.toggle("show");
+}
+function closeSidebar() {
+  document.querySelector(".sidebar")
+    .classList.remove("active");
+  document.getElementById("overlay")
+    .classList.remove("show");
+}
+</script>
 </html>

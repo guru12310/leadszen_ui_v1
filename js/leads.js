@@ -57,6 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
 </td>
 
         <td>${l.source}</td>
+        <td>${l.location}</td>
+        <td>${l.description}</td>
         <td>${new Date(l.created_at).toLocaleDateString()}</td>
       </tr>
     `).join('');
@@ -215,11 +217,13 @@ window.saveLead = async function () {
   const nameInput = document.getElementById("m_name");
   const phoneInput = document.getElementById("m_phone");
   const locationInput = document.getElementById("m_location");
+  const descriptionInput = document.getElementById("m_description");
   const error = document.getElementById("leadError");
 
   const name = nameInput.value.trim();
   const phone = phoneInput.value.trim();
   const location = locationInput.value.trim();
+  const description = descriptionInput.value.trim();
 
   error.innerText = "";
 
@@ -241,12 +245,13 @@ window.saveLead = async function () {
 
   try {
     const res = await fetch("https://leadszen-v1.onrender.com/api/dashboard/leadmanual", {
+    // const res = await fetch("http://localhost:3000/api/dashboard/leadmanual", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token")
       },
-      body: JSON.stringify({ name, phone, location })
+      body: JSON.stringify({ name, phone, location,description })
     });
 
     let result = {};
